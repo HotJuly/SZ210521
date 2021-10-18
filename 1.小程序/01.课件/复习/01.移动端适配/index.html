@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width"/>
+<head>
+    <!-- 
+        视口:布局视口,视觉视口,理想视口(完美)
+        布局视口:
+            页面上具有的所有内容都在该视口中(有什么东西取决于他)
+            html标签就是布局视口
+
+            如何获取布局视口宽度?
+            可以查看html标签宽度,默认980px
+            document.documentElement.clientWidth
+
+            如何改变布局视口大小?
+            通过meta标签可以修改布局视口宽度
+                1.通过width=device-width
+                2.initial-scale=系数(视觉视口宽度/布局视口宽度)
+                优先级:谁计算出来的布局视口更大,以谁为准
+
+            注意:只要网页不设置meta标签,不管布局视口大小多少,都会被拉伸或者压缩到屏幕大小
+
+        视觉视口(设备独立像素或者物理像素):
+            控制用户所能看到的内容(你能看到什么东西取决于他)
+            手机屏幕就是视觉视口
+            如果布局视口内容超出视觉视口,就会出现滚动条
+
+            视觉视口大小不可变
+        理想视口(完美)
+            他不是一个真实存在的视口,他只是一种状态
+            布局视口大小等于视觉视口大小,该状态成为理想视口
+
+
+     -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size:187px;
+        }
+        img{
+            width:375px;
+            height:375px
+        }
+    </style>
+    <!-- 
+        移动端适配:
+            移动端适配需要基于理想视口才能实现
+            需求:现在页面上有一张图片,需要在任何设备上都占据屏幕的一半宽度
+            百分比适配:
+                图片的width百分比参考于body宽度,body宽度参考html宽度,
+                由于已经实现了理想视口,所以当前html标签宽度等于屏幕宽度
+
+                缺点:百分比参考与父级节点,非常麻烦(需要找到一个全局可见的单位,该单位会随着屏幕的宽度发生变化)
+
+            vw,vh适配:
+                100vw = 屏幕100%宽度
+                100vh = 屏幕100%高度
+
+                缺点:兼容性问题,vw和vh都是CSS3新特性
+
+            rem适配:
+                rem => root em(根标签字体大小)
+                rem是整个页面都可以使用的单位
+
+                注意:虽然除的系数可以自定义,但是不要太大,因为浏览器具有最小号字体显示
+                
+                缺点:需要配合js进行计算才能实现
+
+            viewport适配:
+                原理:通过initial-scale控制屏幕的缩放比例
+                UI给出设计稿宽度:750px  图片大小:375px
+    -->
+</head>
+
+<body>
+    <div style="width:100px"><img src="./自拍.jpg" alt="">
+    </div>
+    <script>
+        // var width = document.documentElement.clientWidth;
+        // var fontSize = width/10;
+        // document.documentElement.style="font-size:"+fontSize+"px";
+
+        var width = document.documentElement.clientWidth;
+        var w = 750;
+        var scale = width/750;
+        var meta = document.querySelector('meta[name=viewport]');
+        meta.content = "initial-scale="+scale;
+    </script>
+</body>
+
+</html>
