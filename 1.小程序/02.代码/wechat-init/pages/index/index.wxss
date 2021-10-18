@@ -1,19 +1,19 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
+/* pages/index/index.wxss */
+page{
+  height:100%;
+}
+
+.indexContainer{
+  height:100%;
+  display:flex;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
+  justify-content: space-around;
+  background: pink;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
-  margin-top: 200px;
+.indexContainer .avatarImg{
+  width:400rpx;
+  height:400rpx;
+  border-radius:50%;
 }
