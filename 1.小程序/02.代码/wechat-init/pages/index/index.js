@@ -9,25 +9,39 @@ Page({
     msg:"我是初始化的数据"
   },
 
+  handleClick() {
+    // console.log('handleClick')
+    // wx.redirectTo({
+    //   url:"../log/log"
+    // })
+    wx.navigateTo({
+      url: "../log/log"
+    })
+  },
+
+  handleParent() {
+    // console.log('handleParent')
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('msg',this.data.msg)
-    // this.data.msg="我是修改之后的数据"
-    this.setData({
-      msg: "我是修改之后的数据"
-    })
-    this.setData({
-      msg: "我是修改之后的数据1"
-    })
-    this.setData({
-      msg: "我是修改之后的数据2"
-    })
-    this.setData({
-      msg: "我是修改之后的数据3"
-    })
-    console.log('msg1', this.data.msg)
+    // console.log('msg',this.data.msg)
+    // // this.data.msg="我是修改之后的数据"
+    // this.setData({
+    //   msg: "我是修改之后的数据"
+    // })
+    // this.setData({
+    //   msg: "我是修改之后的数据1"
+    // })
+    // this.setData({
+    //   msg: "我是修改之后的数据2"
+    // })
+    // this.setData({
+    //   msg: "我是修改之后的数据3"
+    // })
+    // console.log('msg1', this.data.msg)
   },
 
   /**
