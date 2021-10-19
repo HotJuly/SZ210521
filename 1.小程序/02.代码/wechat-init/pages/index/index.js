@@ -6,8 +6,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msg:"我是初始化的数据"
+    msg:"我是初始化的数据",
+    userInfo:{}
   },
+
+  //用户获取用户信息
+  getUserInfo(res){
+    // console.log('getUserInfo', res)
+    if(res.detail.rawData){
+      // 能进入这里说明用户允许获取授权
+      this.setData({
+        userInfo:res.detail.userInfo
+      })
+    }
+  },
+
   changeMsg(){
     // console.log('changeMsg')
     this.setData({
@@ -49,7 +62,14 @@ Page({
     // })
     // console.log('msg1', this.data.msg)
     console.log('---------onLoad---------')
-    debugger
+    wx.getUserInfo({
+      success:(detail)=>{
+        // console.log('success', detail)
+        this.setData({
+          userInfo:detail.userInfo
+        })
+      }
+    })
   },
 
   /**

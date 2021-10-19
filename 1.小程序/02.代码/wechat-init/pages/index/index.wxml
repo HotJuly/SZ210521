@@ -9,8 +9,17 @@
     相当于是button,他专门用于显示按钮
  -->
 <view class="indexContainer">
-  <image class="avatarImg" src="/static/images/dazuo.jpeg"></image>
-  <text class="username" bindtap="changeMsg">你好,{{msg}}</text>
+  <image
+  wx:if="{{userInfo.avatarUrl}}"
+  class="avatarImg" 
+  src="{{userInfo.avatarUrl}}"
+  ></image>
+  <button 
+  wx:else
+  open-type="getUserInfo"
+  bindgetuserinfo="getUserInfo"
+  class="avatarImg">获取用户授权</button>
+  <text class="username" bindtap="changeMsg">你好,{{userInfo.nickName}}</text>
   <view bindtap="handleParent">
     <button class="welcome" bindtap="handleClick">欢迎来到尚硅谷</button>
   </view>
