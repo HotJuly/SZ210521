@@ -8,15 +8,21 @@ Page({
   data: {
     msg:"我是初始化的数据"
   },
+  changeMsg(){
+    // console.log('changeMsg')
+    this.setData({
+      msg:"我是修改之后的数据"
+    })
+  },
 
   handleClick() {
     // console.log('handleClick')
-    // wx.redirectTo({
-    //   url:"../log/log"
-    // })
-    wx.navigateTo({
-      url: "../log/log"
+    wx.redirectTo({
+      url:"../log/log"
     })
+    // wx.navigateTo({
+    //   url: "../log/log"
+    // })
   },
 
   handleParent() {
