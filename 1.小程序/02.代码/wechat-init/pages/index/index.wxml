@@ -14,11 +14,21 @@
   class="avatarImg" 
   src="{{userInfo.avatarUrl}}"
   ></image>
-  <button 
+
+  <!-- <button 
   wx:else
   open-type="getUserInfo"
   bindgetuserinfo="getUserInfo"
+  class="avatarImg">获取用户授权</button> -->
+
+  
+  <button 
+  wx:else
+  bindtap="getUserProfile"
   class="avatarImg">获取用户授权</button>
+
+
+  <open-data type="userAvatarUrl"></open-data>
   <text class="username" bindtap="changeMsg">你好,{{userInfo.nickName}}</text>
   <view bindtap="handleParent">
     <button class="welcome" bindtap="handleClick">欢迎来到尚硅谷</button>

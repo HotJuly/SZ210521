@@ -10,6 +10,20 @@ Page({
     userInfo:{}
   },
 
+  // 最新版获取用户信息
+  getUserProfile(){
+    // console.log('getUserProfile')
+    wx.getUserProfile({
+      desc: "用于测试用户授权",
+      success: (detail) => {
+        // console.log('success', detail)
+        this.setData({
+          userInfo:detail.userInfo
+        })
+      }
+    })
+  },
+
   //用户获取用户信息
   getUserInfo(res){
     // console.log('getUserInfo', res)
@@ -62,14 +76,14 @@ Page({
     // })
     // console.log('msg1', this.data.msg)
     console.log('---------onLoad---------')
-    wx.getUserInfo({
-      success:(detail)=>{
-        // console.log('success', detail)
-        this.setData({
-          userInfo:detail.userInfo
-        })
-      }
-    })
+    // wx.getUserInfo({
+    //   success:(detail)=>{
+    //     // console.log('success', detail)
+    //     this.setData({
+    //       userInfo:detail.userInfo
+    //     })
+    //   }
+    // })
   },
 
   /**
