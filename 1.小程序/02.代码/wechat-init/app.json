@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/log/log"
   ],
-  "window":{
+  "window": {
     "navigationBarBackgroundColor": "#f0f",
     "navigationBarTitleText": "atguigu"
-  }
+  },
+  "sitemapLocation": "sitemap76.json"
 }
