@@ -27,3 +27,68 @@
 .indexContainer .nav .navItem .navTitle{
   font-size:28rpx;
 }
+
+/* 推荐歌曲开始 */
+.recommendContainer{
+  padding:0 20rpx;
+}
+
+.header .title{
+  font-size:28rpx;
+}
+
+.header .moreContent .moreTitle{
+  float:left;
+  font-size:30rpx;
+}
+
+.header .moreContent .more{
+  float:right;
+  font-size:24rpx;
+  border:1rpx solid;
+  padding:10rpx 20rpx;
+  border-radius: 15rpx;
+}
+
+.recommendContainer .recommendScroll{
+  display:flex;
+
+  /* scroll-view具有BUG
+    虽然开启flex之后,页面效果是以横向布局
+    但是在计算布局高度的时候,依旧按照开启flex之前的高度进行计算
+   */
+  height:300rpx;
+}
+
+.recommendContainer .recommendScroll .recommendItem{
+  margin-right:20rpx;
+}
+
+.recommendContainer .recommendScroll .recommendItem .recommendImg{
+  width:200rpx;
+  height:200rpx;
+  border-radius: 20rpx;
+}
+
+.recommendContainer .recommendScroll .recommendItem .recommendContent{
+  /* 单行文本溢出隐藏,同时显示省略号 */
+  width:200rpx;
+  height:80rpx;
+  /* white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis; */
+
+  /* 面试题:如何实现多行文本溢出隐藏,同时显示省略号 */
+  /* 1.开启webkit内核盒模型 */
+  display:-webkit-box;
+
+  /* 2.告知盒模型,几行之后需要溢出隐藏 */
+  -webkit-line-clamp:2;
+
+  /* 3.告知盒模型,内部文本的排列方向 */
+  -webkit-box-orient:vertical;
+
+  overflow: hidden;
+}
+
+/* 推荐歌曲结束 */

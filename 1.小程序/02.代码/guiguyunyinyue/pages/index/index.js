@@ -39,6 +39,9 @@ Page({
     // console.log(1)
     wx.request({
       url:"http://localhost:3000/banner",
+      data:{
+        type:2
+      },
       success:(res)=>{
         // console.log(res)
         // 获取到响应体数据:res.data
