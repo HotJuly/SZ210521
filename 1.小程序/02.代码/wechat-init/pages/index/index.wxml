@@ -31,6 +31,6 @@
   <open-data type="userAvatarUrl"></open-data>
   <text class="username" bindtap="changeMsg">你好,{{userInfo.nickName}}</text>
   <view bindtap="handleParent">
-    <button class="welcome" bindtap="handleClick">欢迎来到尚硅谷</button>
+    <button class="welcome" bindtap="handleClick">欢迎来到{{city}}尚硅谷</button>
   </view>
 </view>
