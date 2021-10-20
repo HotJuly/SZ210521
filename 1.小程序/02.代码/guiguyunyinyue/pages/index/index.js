@@ -1,3 +1,4 @@
+import req from '../../utils/req.js'
 Page({
 
   /**
@@ -5,13 +6,16 @@ Page({
    */
   data: {
     // 用于展示页面的轮播图数据
-    banners:[]
+    banners:[],
+
+    // 用于展示页面的推荐歌曲区域数据
+    recommendlist:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad:async function (options) {
     /*
       1.在哪发
         mounted,created
@@ -37,19 +41,41 @@ Page({
     // console.log('wx', wx)
 
     // console.log(1)
-    wx.request({
-      url:"http://localhost:3000/banner",
-      data:{
-        type:2
-      },
-      success:(res)=>{
-        // console.log(res)
-        // 获取到响应体数据:res.data
-        this.setData({
-          banners:res.data.banners
-        })
-      }
+    // wx.request({
+    //   url:"http://localhost:3000/banner",
+    //   data:{
+    //     type:2
+    //   },
+    //   success:(res)=>{
+    //     // console.log(res)
+    //     // 获取到响应体数据:res.data
+    //     this.setData({
+    //       banners:res.data.banners
+    //     })
+    //   }
+    // })
+    // console.log(111,req("/banner", {type:2}));
+
+    const result = await req("/banner", { type: 2 });
+    // console.log(result)
+    this.setData({
+      banners: result.banners
     })
+
+    const result2 = await req("/personalized");
+    this.setData({
+      recommendList: result2.result
+    })
+    // wx.request({
+    //   url: "http://localhost:3000/personalized",
+    //   success: (res) => {
+    //     console.log(res)
+    //     // 获取到响应体数据:res.data
+    //     // this.setData({
+    //     //   banners: res.data.banners
+    //     // })
+    //   }
+    // })
     // console.log(2)
   },
 
