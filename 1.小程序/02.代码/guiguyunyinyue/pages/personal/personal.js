@@ -9,7 +9,10 @@ Page({
     moveDistance:0,
 
     // 用于控制元素回弹的过渡效果
-    moveTransition:""
+    moveTransition:"",
+
+    // 用来收集用户的个人数据
+    userInfo:{}
   },
 
   // 用于监视用户点击游客按钮,跳转到登录页面
@@ -71,7 +74,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 从Storage中读取用户的个人数据
+    const userInfoStr = wx.getStorageSync("userInfo");
+    if (userInfoStr) {
+      const userInfo = JSON.parse(userInfoStr);
+      console.log('userInfo', userInfo)
+      this.setData({
+        userInfo
+      })
+    }
   },
 
   /**

@@ -83,6 +83,15 @@ Page({
         wx.showToast({
           title: '登陆成功,即将跳转',
           icon: "none"
+        });
+
+        wx.setStorage({
+          key:"userInfo",
+          data: JSON.stringify(result.profile)
+        })
+
+        wx.switchTab({
+          url:"/pages/personal/personal"
         })
       },
       400() {
