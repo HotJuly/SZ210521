@@ -12,8 +12,20 @@ Page({
     moveTransition:""
   },
 
+  // 用于监视用户点击游客按钮,跳转到登录页面
+  toLogin(){
+    // console.log('toLogin')
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  },
+
   // 监视用户手指按下事件
   handleTouchStart(event) {
+    /*
+      touches数组用来存储当前手机屏幕上所有的手指相关信息
+      changedTouches数组用来存储当前手机屏幕上正在变化的所有的手指相关信息
+     */
     // console.log('handleTouchStart', event)
     this.startY = event.touches[0].clientY;
     this.setData({
