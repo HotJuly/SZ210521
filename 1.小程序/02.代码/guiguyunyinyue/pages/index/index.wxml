@@ -58,7 +58,7 @@
       wx:for="{{recommendList}}"
       wx:key="id"
       >
-        <image class="recommendImg" src="{{item.picUrl}}"></image>
+        <image class="recommendImg" src="{{item.picUrl}}" lazy-load></image>
         <view class="recommendContent">
         {{item.name}}
         </view>
@@ -73,72 +73,25 @@
     next-margin="50"
     snap-to-edge
     >
-      <swiper-item>
+      <swiper-item
+        wx:for="{{topList}}"
+        wx:key="id"
+      >
         <view class="topItem">
           <view>
-            云音乐说唱榜
+            {{item.name}}
           </view>
           <!-- <text>云音乐说唱榜</text> -->
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对</view>
-          </view>
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对</view>
-          </view>
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对</view>
-          </view>
-        </view>
-      </swiper-item>
-      <swiper-item>
-        <view class="topItem">
-          <view>
-            云音乐说唱榜
-          </view>
-          <!-- <text>云音乐说唱榜</text> -->
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对</view>
-          </view>
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对</view>
-          </view>
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对</view>
-          </view>
-        </view>
-      </swiper-item>
-      <swiper-item>
-        <view class="topItem">
-          <view>
-            云音乐说唱榜
-          </view>
-          <!-- <text>云音乐说唱榜</text> -->
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对</view>
-          </view>
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对</view>
-          </view>
-          <view class="song">
-            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
-            <view class="songIndex">1</view>
-            <view class="songName">危险派对</view>
+          <view 
+          class="song"
+          wx:for="{{item.list}}"
+          wx:key="id"
+          wx:for-item="song"
+          wx:for-index="songIndex"
+          >
+            <image class="songImg" src="{{song.picUrl}}" lazy-load></image>
+            <view class="songIndex">{{songIndex + 1}}</view>
+            <view class="songName">{{song.name}}</view>
           </view>
         </view>
       </swiper-item>

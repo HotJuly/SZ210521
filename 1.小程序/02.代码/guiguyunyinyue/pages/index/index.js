@@ -9,7 +9,10 @@ Page({
     banners:[],
 
     // 用于展示页面的推荐歌曲区域数据
-    recommendlist:[]
+    recommendlist:[],
+
+    // 用于展示排行榜区域数据
+    topList:[]
   },
 
   /**
@@ -56,15 +59,24 @@ Page({
     // })
     // console.log(111,req("/banner", {type:2}));
 
-    const result = await req("/banner", { type: 2 });
-    // console.log(result)
-    this.setData({
-      banners: result.banners
+    // const result = await req("/banner", { type: 2 });
+    // // console.log(result)
+    // this.setData({
+    //   banners: result.banners
+    // })
+
+    req("/banner", { type: 2 })
+      .then((result) => {
+        this.setData({
+          banners: result.banners
+        })
     })
 
-    const result2 = await req("/personalized");
-    this.setData({
-      recommendList: result2.result
+    req("/personalized")
+      .then((result2)=>{
+      this.setData({
+        recommendList: result2.result
+      })
     })
     // wx.request({
     //   url: "http://localhost:3000/personalized",
@@ -77,6 +89,43 @@ Page({
     //   }
     // })
     // console.log(2)
+
+    const arr = [1,4,8,16,22];
+    const topList = [];
+    let index = 0;
+
+    // while (index<arr.length) {
+    //   const result3 = await req("/top/list", { idx: arr[index++] });
+    //   const obj = {
+    //     name: result3.playlist.name,
+    //     id: result3.playlist.id,
+    //     list: result3.playlist.tracks.slice(0, 3).map(function (item) {
+    //       return item.al
+    //     })
+    //   }
+    //   topList.push(obj);
+    //   this.setData({
+    //     topList
+    //   })
+    // }
+
+
+    while (index < arr.length) {
+      req("/top/list", { idx: arr[index++] })
+        .then((result3) => {
+          const obj = {
+            name: result3.playlist.name,
+            id: result3.playlist.id,
+            list: result3.playlist.tracks.slice(0, 3).map(function (item) {
+              return item.al
+            })
+          }
+          topList.push(obj);
+          this.setData({
+            topList
+          })
+      })
+    }
   },
 
   /**
