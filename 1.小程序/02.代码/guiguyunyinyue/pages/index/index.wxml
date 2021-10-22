@@ -45,13 +45,8 @@
   </view>
 
   <view class="recommendContainer">
-    <view class="header">
-      <view class="title">推荐歌曲</view>
-      <view class="moreContent">
-        <view class="moreTitle">为你精心推荐</view>
-        <view class="more">查看更多</view>
-      </view>
-    </view>
+    <!-- NavHeader区域 -->
+    <NavHeader title="推荐歌曲" moreTitle="为你精心推荐"/>
 
     <scroll-view 
     class="recommendScroll"
@@ -69,6 +64,84 @@
         </view>
       </view>
     </scroll-view>
-    123
+  </view>
+
+  <view class="topContainer">
+    <NavHeader title="排行榜" moreTitle="热歌风向标"/>
+    <swiper 
+    class="topSwiper"
+    next-margin="50"
+    snap-to-edge
+    >
+      <swiper-item>
+        <view class="topItem">
+          <view>
+            云音乐说唱榜
+          </view>
+          <!-- <text>云音乐说唱榜</text> -->
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对</view>
+          </view>
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对</view>
+          </view>
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对</view>
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="topItem">
+          <view>
+            云音乐说唱榜
+          </view>
+          <!-- <text>云音乐说唱榜</text> -->
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对危险派对</view>
+          </view>
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对</view>
+          </view>
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对</view>
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="topItem">
+          <view>
+            云音乐说唱榜
+          </view>
+          <!-- <text>云音乐说唱榜</text> -->
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对</view>
+          </view>
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对</view>
+          </view>
+          <view class="song">
+            <image class="songImg" src="/static/images/dazuo.jpeg"></image>
+            <view class="songIndex">1</view>
+            <view class="songName">危险派对</view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
   </view>
 </view>
