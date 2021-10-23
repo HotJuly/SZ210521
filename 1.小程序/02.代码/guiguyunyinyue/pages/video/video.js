@@ -10,7 +10,20 @@ Page({
     navList:[],
 
     // 用于控制导航栏的下划线显示
-    navId:58100
+    navId:null,
+
+    // 用于展示页面上的视频列表
+    videoList:[]
+  },
+
+  // 用于请求对应的视频列表数据
+  async getVideoList(){
+    const result2 = await req('/video/group', { id: this.data.navId });
+    this.setData({
+      videoList: result2.datas.map((item) => {
+        return item.data;
+      })
+    })
   },
 
   // 用于监视用户点击导航栏操作,并实现下划线的切换效果
@@ -25,6 +38,8 @@ Page({
       navId: event.currentTarget.dataset.id
       // navId: event.target.dataset.id
     })
+
+    this.getVideoList();
   },
 
   /**
@@ -47,11 +62,11 @@ Page({
   onShow:async function () {
     const result = await req('/video/group/list');
     this.setData({
-      navList:result.data.slice(0,13)
+      navList:result.data.slice(0,13),
+      navId: result.data[0].id
     })
 
-    const result2 = await req('/video/group', { id: 60100});
-    // console.log(result2)
+    this.getVideoList();
   },
 
   /**
