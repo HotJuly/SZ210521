@@ -51,8 +51,9 @@ Page({
       return;
     }
 
-    const result = await req("/login/cellphone", { phone, password });
+    const result = await req("/login/cellphone", { phone, password ,_isLogin:true});
     const code = result.code;
+    // console.log('result', result)
 
     // if(code===200){
     //   wx.showToast({

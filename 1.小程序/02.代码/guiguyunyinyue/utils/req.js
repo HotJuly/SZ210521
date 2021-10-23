@@ -25,9 +25,23 @@ export default function (url, data={}, method="GET") {
       url: config.mpHost + url,
       data,
       method,
+      header:{
+        Cookie:wx.getStorageSync('cookie')
+      },
       success: (res) => {
-        // console.log(res)
+        // console.log('res',res)
         // result = res;
+        if (data._isLogin) {
+          const cookie = res.cookies.find((item) => {
+            return item.startsWith('MUSIC_U')
+          })
+
+          wx.setStorage({
+            key: "cookie",
+            data: cookie
+          })
+        }
+        // console.log('cookie', cookie)
         resolve(res.data)
       }
     })
