@@ -1,4 +1,5 @@
 // pages/personal/personal.js
+import req from '../../utils/req.js';
 Page({
 
   /**
@@ -12,7 +13,10 @@ Page({
     moveTransition:"",
 
     // 用来收集用户的个人数据
-    userInfo:{}
+    userInfo:{},
+
+    // 用来显示最近播放记录列表
+    playList:[]
   },
 
   // 用于监视用户点击游客按钮,跳转到登录页面
@@ -73,15 +77,25 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow:async function () {
     // 从Storage中读取用户的个人数据
     const userInfoStr = wx.getStorageSync("userInfo");
     if (userInfoStr) {
       const userInfo = JSON.parse(userInfoStr);
-      console.log('userInfo', userInfo)
+      // console.log('userInfo', userInfo)
       this.setData({
         userInfo
       })
+
+      const result = await req('/user/record',{uid:userInfo.userId,type:1});
+
+      this.setData({
+        playList:result.weekData.map((item)=>{
+          return item.song.al.picUrl;
+        })
+      })
+
+      console.log('result', result)
     }
   },
 

@@ -139,6 +139,7 @@ Page({
         告知当前回调函数,是哪个组件触发的该事件
      */
     // console.log('handleChange', event.target.dataset.type)
+    console.log('event',event)
     const type = event.target.dataset.type;
     this.setData({
       [type]: event.detail.value
