@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Promise的回调函数是同步执行
+            定时器属于宏任务,他会晚于主线程代码执行
+
+            async函数返回值是一个全新的promise对象,而且async函数中的返回值会作为该promise对象的result结果值
+                pending
+                resolved
+                    只要当前async函数中所有的代码,正常执行结束,返回的promise对象会自动变为成功状态
+                rejected
+                    只要当前async函数中出现报错,代码无法正常执行结束,返回的promise对象会自动变为失败状态
+        */
+        var promise;
+        async function a(){
+            console.log(3)
+            promise = new Promise((resolve,reject)=>{
+                console.log(4)
+                setTimeout(()=>{
+                    console.log(5)
+                    resolve();
+                },0)
+            })
+
+            throw new Error('xixi')
+            
+            await promise
+            console.log(6)
+
+            return 123
+        }
+
+
+        console.log(1)
+        var b = a();
+        console.log('b',b)
+        console.log(2)
+    </script>
+</body>
+</html>
