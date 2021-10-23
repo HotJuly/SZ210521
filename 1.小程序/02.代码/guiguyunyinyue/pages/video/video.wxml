@@ -22,7 +22,14 @@
   </scroll-view>
 
   <!-- videoList区域 -->
-  <scroll-view class="videoList" scroll-y>
+  <scroll-view 
+  class="videoList" 
+  scroll-y
+  refresher-enabled
+  refresher-triggered="{{isTriggered}}"
+  bindrefresherrefresh="handlePullDown"
+  bindscrolltolower="handleScrollToLower"
+  >
     <view 
     class="videoItem"
     wx:for="{{videoList}}"
@@ -48,7 +55,12 @@
             <text class="iconfont icon-pinglun1"></text>
             <text class="count">{{item.commentCount}}</text>
           </text>
-          <button class="item btn">
+          <button 
+          class="item btn" 
+          open-type="share"
+          data-title="{{item.title}}"
+          data-imageUrl="{{item.coverUrl}}"
+          >
             <text class="iconfont icon-gengduo"></text>
           </button>
         </view>

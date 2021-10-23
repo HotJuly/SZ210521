@@ -13,7 +13,29 @@ Page({
     navId:null,
 
     // 用于展示页面上的视频列表
-    videoList:[]
+    videoList:[],
+
+    // 用于控制scroll-view下拉动画开关
+    isTriggered:false
+  },
+
+  // 用于监视用户上拉scroll-view组件触底操作
+  handleScrollToLower(){
+    // console.log('handleScrollToLower')
+    setTimeout(()=>{
+      this.setData({
+        videoList:[...this.data.videoList,...this.data.videoList.slice(0,8)]
+      })
+    },1000)
+  },
+
+  // 用于监视用户下拉scroll-view组件操作
+  async handlePullDown(){
+    // console.log('handlePullDown')  
+    await this.getVideoList();
+    this.setData({
+      isTriggered:false
+    })
   },
 
   // 用于测试练习video相关API
@@ -136,20 +158,38 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log('onPullDownRefresh')
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('onReachBottom')
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function ({from,target}) {
+    console.log('onShareAppMessage', from, target)
+    if(from==="menu"){
+      // 能进入此处,说明当前是通过右上角转发按钮进入的
+      return{
+        title:"硅谷云音乐",
+        path:"/pages/index/index",
+        imageUrl:"/static/images/nvshen.jpg"
+      }
+    }else if(from==="button"){
+      // 能进入此处,说明当前是通过页面的button组件进入的
+      // 注意:自定义属性名称不能有大写,否则会自动转为小写
+      const {title,imageurl} = target.dataset;
+      // console.log('imageUrl', imageUrl)
+      return {
+        title,
+        path: "/pages/video/video",
+        imageUrl: imageurl
+      }
+    }
   }
 })
