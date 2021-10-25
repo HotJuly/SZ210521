@@ -17,6 +17,6 @@
 				1.通过wx.getBackgroundAudioManager()可以得到backgroundAudioManager实例对象
 					可以获取到全局唯一的背景音频管理器实例对象
 				2.通过backgroundAudioManager实例可以对当前小程序的背景音频进行控制
-					添加src属性可以自动播放音频
+					添加src,title属性可以自动播放音频
 			2.如何让页面C3进入播放状态
 				当前页面的C3效果,其实是通过类名isplay控制的

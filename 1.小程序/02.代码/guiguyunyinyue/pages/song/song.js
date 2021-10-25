@@ -1,5 +1,7 @@
 // pages/song/song.js
+import PubSub from 'pubsub-js'
 import req from '../../utils/req.js'
+const appInstance = getApp();
 Page({
 
   /**
@@ -27,9 +29,22 @@ Page({
     const backgroundAudioManager = wx.getBackgroundAudioManager();
     if(this.data.isPlay){
       backgroundAudioManager.pause();
+
+
+      // 1.缓存当前正在播放的歌曲的状态
+      appInstance.globalData.playState = false;
+
+      // 此处不需要缓存歌曲的id,因为能进入到这里,说明已经经过了播放歌曲的逻辑
+
     } else {
       backgroundAudioManager.src = this.data.musicUrl;
       backgroundAudioManager.title = this.data.songObj.name;
+
+      // 1.缓存当前正在播放的歌曲的状态
+      appInstance.globalData.playState = true;
+
+      // 2.缓存当前正在播放的歌曲的id
+      appInstance.globalData.audioId = this.data.songObj.id;
     }
 
     this.setData({
@@ -64,6 +79,22 @@ Page({
     this.setData({
       musicUrl: result1.data[0].url
     })
+
+    // 以下代码用于测试小程序全局对象传参
+    // console.log('appInstance1', appInstance.a.msg)
+    // appInstance.globalData.msg = "我是全局修改之后的数据"
+    // console.log('appInstance2', appInstance.globalData.msg)
+
+    // 用于获取当前背景音频的歌曲信息和播放状态
+    const {audioId,playState} = appInstance.globalData;
+    // console.log(songId,audioId, playState)
+    if (audioId === songId*1 && playState){
+      this.setData({
+        isPlay:true
+      })
+    }
+
+    console.log('PubSub', PubSub)
   },
 
   /**
