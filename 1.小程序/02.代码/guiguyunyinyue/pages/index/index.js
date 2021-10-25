@@ -14,6 +14,13 @@ Page({
     // 用于展示排行榜区域数据
     topList:[]
   },
+  
+  // 用于监视用户点击每日推荐按钮,跳转到每日推荐页面
+  toRecommendSong(){
+    wx.navigateTo({
+      url: '/pages/recommendSong/recommendSong',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
