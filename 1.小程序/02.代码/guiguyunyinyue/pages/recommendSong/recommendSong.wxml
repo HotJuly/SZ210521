@@ -22,6 +22,7 @@
       wx:key="id"
       data-song="{{item}}"
       data-songid="{{item.id}}"
+      data-index="{{index}}"
       bindtap="toSong"
       >
         <image src="{{item.album.picUrl}}" lazy-load></image>

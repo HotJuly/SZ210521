@@ -1,4 +1,5 @@
 // pages/recommendSong/recommendSong.js
+import PubSub from 'pubsub-js'
 import req from '../../utils/req.js'
 import hasPermission from '../../utils/hasPermission.js'
 Page({
@@ -9,15 +10,20 @@ Page({
   data: {
     month:"--",
     day:"--",
-    recommendList:[]
+    recommendList:[],
+    currentIndex:null
   },
 
   // 用于监视用户点击推荐列表中的歌曲,自动跳转到song页面
   toSong(event){
     // console.log('toSong')
     // 自定义属性传入什么数据,返回的也是什么数据,不会做数据类型转换
-    const { songid } = event.currentTarget.dataset;
+    const { songid , index } = event.currentTarget.dataset;
     // console.log('song', song)
+
+    this.setData({
+      currentIndex: index
+    })
 
     // 可以通过query实现路由传参
     // 注意:小程序只支持query传参,不支持params
@@ -45,6 +51,31 @@ Page({
     const result = await req('/recommend/songs');
     this.setData({
       recommendList:result.recommend
+    })
+
+    PubSub.subscribe("switchType",(msg,type)=>{
+      // console.log('switchType', msg, type)
+      // 找到对应歌曲的id
+      let {currentIndex,recommendList} = this.data;
+      if (type === "next") {
+        if (currentIndex===recommendList.length-1){
+          currentIndex=0;
+        } else {
+          currentIndex++;
+        }
+      } else {
+        if (currentIndex === 0) {
+          currentIndex = recommendList.length - 1;
+        } else {
+          currentIndex--;
+        }
+      }
+      this.setData({
+        currentIndex
+      })
+      const id = recommendList[currentIndex].id;
+      PubSub.publish('sendId',id)
+      // console.log('id',id)
     })
   },
 
