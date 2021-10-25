@@ -34,9 +34,14 @@
         // console.log("12",[]==![]); //true  []==false   =>  ""==false   =>  0===0
         // console.log("14",{}==!{}); //false  {}==false   =>  '[object Object]'==false =>  NaN===0
 
-        console.log("15",0=="0")   //   0==0    true
-        console.log("16",0==[])    //   0==""   =>  0===0   true
-        console.log("17","0"==[])  //   "0"==""    false
+        // console.log("15",0=="0")   //   0==0    true
+        // console.log("16",0==[])    //   0==""   =>  0===0   true
+        // console.log("17","0"==[])  //   "0"==""    false
+
+
+        // 通过valueOf可以回去包装类对象的基本数据类型的值
+        const numObj = new Number(1)
+        console.log(numObj.valueOf(),numObj==1)
 
 
 

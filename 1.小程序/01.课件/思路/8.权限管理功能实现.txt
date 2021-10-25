@@ -1,0 +1,8 @@
+需求:当用户进入video页面时,如果用户没有登录,就弹出窗口引导用户进行登录
+拆解:
+	1.如何知道用户进入了video页面
+		生命周期,onShow
+	2.如何知道用户有没有登录
+		根据Storage中是否存有cookie数据,可以分辨
+	3.如何弹出窗口引导用户
+		API:wx.showModal(Object object)

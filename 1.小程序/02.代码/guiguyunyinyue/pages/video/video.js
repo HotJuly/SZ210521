@@ -1,5 +1,6 @@
 // pages/video/video.js
 import req from '../../utils/req.js'
+import hasPermission from '../../utils/hasPermission.js'
 Page({
 
   /**
@@ -16,7 +17,31 @@ Page({
     videoList:[],
 
     // 用于控制scroll-view下拉动画开关
-    isTriggered:false
+    isTriggered:false,
+
+    // 用于控制页面上video组件和image组件的切换
+    currentId:null
+  },
+
+  // 用于监视用户点击图片操作,并切换显示出对应的video组件,最终实现播放效果
+  triggerComponent(event){
+    // console.log('event', event)
+    /*
+      setData可以接收第二个实参,数据类型是函数
+      该函数会在setData触发视图更新之后才执行,相当于Vue中的$nextTick
+     */
+    const currentId = event.currentTarget.id;
+    this.setData({
+      currentId
+    },()=>{
+      /*
+          1.找到某个video组件的上下文对象
+          2.调用该对象身上的play方法实现视频播放
+          注意:此处可能出现调试工具BUG问题,切换视频播放的时候,可能不会自动播放
+       */
+      const videoContext = wx.createVideoContext(currentId);
+      videoContext.play();
+    })
   },
 
   // 用于监视用户上拉scroll-view组件触底操作
@@ -131,6 +156,38 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow:async function () {
+    /*
+      判断用户是否已经登录,通过Storage中的cookie属性
+    
+     */
+    // const cookie = wx.getStorageSync('cookie');
+    // if(!cookie){
+    //   wx.showModal({
+    //     title:"请先登录",
+    //     content:"该功能需要登录之后才能使用",
+    //     confirmText:"去登录",
+    //     cancelText:"回到首页",
+    //     success: ({ confirm})=>{
+    //       // 无论点击确定还是取消按钮都会触发成功回调函数
+    //       // console.log('success', data)
+    //       if (confirm){
+    //         wx.navigateTo({
+    //           url: '/pages/login/login',
+    //         })
+    //       } else {
+    //         wx.switchTab({
+    //           url: '/pages/index/index',
+    //         })
+    //       }
+    //     },
+    //     fail: () => {
+    //       console.log('fail')
+    //     }
+    //   })
+    //   return;
+    // }
+
+    if(!hasPermission())return;
     const result = await req('/video/group/list');
     this.setData({
       navList:result.data.slice(0,13),
