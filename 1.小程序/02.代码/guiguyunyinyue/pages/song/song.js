@@ -9,20 +9,53 @@ Page({
    */
   data: {
     // 用于存储当前页面对应歌曲的详细信息
-    songObj:{},
+    songObj: {},
 
     // 用于控制当前页面的C3状态,并且记录当前页面播放状态
-    isPlay:false,
+    isPlay: false,
 
     // 用于存储当前页面对应歌曲的音频链接
-    musicUrl:null,
+    musicUrl: null,
 
     // 用于存储当前页面歌曲id
-    songId:null
+    songId: null
+  },
+
+  // 用于绑定与背景音频相关的事件监听
+  addEvent() {
+
+    // 用于监视背景音频播放事件
+    this.backgroundAudioManager.onPlay(() => {
+      // console.log('onPlay')
+      if (appInstance.globalData.audioId === this.data.songId*1) {
+        // 如果当前页面展示歌曲和当前背景音频正在播放的是同一首歌,才执行以下代码
+        this.setData({
+          isPlay: true
+        })
+      }
+
+      // 1.缓存当前正在播放的歌曲的状态
+      appInstance.globalData.playState = true;
+    })
+
+    // 用于监视背景音频暂停事件
+    this.backgroundAudioManager.onPause(() => {
+      // console.log('onPause')
+      if (appInstance.globalData.audioId === this.data.songId * 1) {
+        // 如果当前页面展示歌曲和当前背景音频正在播放的是同一首歌,才执行以下代码
+        this.setData({
+          isPlay: false
+        })
+
+      }
+
+      // 1.缓存当前正在播放的歌曲的状态
+      appInstance.globalData.playState = false;
+    })
   },
 
   // 用于请求歌曲的音频链接
-  async getMusicUrl(){
+  async getMusicUrl() {
     const result1 = await req('/song/url', { id: this.data.songId });
     this.setData({
       musicUrl: result1.data[0].url
@@ -30,7 +63,7 @@ Page({
   },
 
   // 用于请求歌曲的详细信息
-  async getMusicDetail(){
+  async getMusicDetail() {
     const result = await req('/song/detail', { ids: this.data.songId });
     this.setData({
       songObj: result.songs[0]
@@ -43,40 +76,22 @@ Page({
   },
 
   // 用于监视用户点击上一首/下一首按钮,自动切换对应歌曲
-  switchType(event){
+  switchType(event) {
     const { id } = event.currentTarget
     // console.log('switchType')
-    // 订阅消息switchType
-    PubSub.subscribe('sendId',async (msg,id)=>{
-      // console.log('sendId', msg, id)
-      this.setData({
-        songId:id
-      })
-
-      await this.getMusicDetail();
-      await this.getMusicUrl();
-
-      this.backgroundAudioManager.src = this.data.musicUrl;
-      this.backgroundAudioManager.title = this.data.songObj.name;
-
-      this.setData({
-        isPlay:true
-      })
-
-    })
 
     PubSub.publish('switchType', id)
   },
 
   // 用于监视用户点击播放按钮操作,实现对页面的播放状态的控制
-  handlePlay(){
+  handlePlay() {
     /*
       如果当前背景音频处于播放状态,那么就要暂停音频
       如果当前背景音频处于暂停状态,那么就要播放音频
      */
 
     // const backgroundAudioManager = wx.getBackgroundAudioManager();
-    if(this.data.isPlay){
+    if (this.data.isPlay) {
       this.backgroundAudioManager.pause();
 
 
@@ -97,14 +112,14 @@ Page({
     }
 
     this.setData({
-      isPlay:!this.data.isPlay
+      isPlay: !this.data.isPlay
     })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad:async function (options) {
+  onLoad: async function (options) {
     /*
       小程序接收路由传参的数据,需要通过onLoad的形参options获取,options是一个query对象
      */
@@ -144,13 +159,34 @@ Page({
     this.backgroundAudioManager = wx.getBackgroundAudioManager();
 
     // 用于获取当前背景音频的歌曲信息和播放状态
-    const {audioId,playState} = appInstance.globalData;
-    // console.log(songId,audioId, playState)
-    if (audioId === songId*1 && playState){
+    const { audioId, playState } = appInstance.globalData;
+    console.log(songId,audioId, playState)
+    if (audioId === songId * 1 && playState) {
       this.setData({
-        isPlay:true
+        isPlay: true
       })
     }
+
+    this.addEvent();
+
+    // 订阅消息switchType
+    this.token = PubSub.subscribe('sendId', async (msg, id) => {
+      // console.log('sendId', msg, id)
+      this.setData({
+        songId: id
+      })
+
+      await this.getMusicDetail();
+      await this.getMusicUrl();
+
+      this.backgroundAudioManager.src = this.data.musicUrl;
+      this.backgroundAudioManager.title = this.data.songObj.name;
+
+      this.setData({
+        isPlay: true
+      })
+
+    })
 
     // console.log('PubSub', PubSub)
   },
@@ -180,7 +216,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    PubSub.unsubscribe(this.token);
   },
 
   /**

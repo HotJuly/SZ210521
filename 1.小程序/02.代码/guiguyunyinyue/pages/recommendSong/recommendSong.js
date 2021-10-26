@@ -53,7 +53,7 @@ Page({
       recommendList:result.recommend
     })
 
-    PubSub.subscribe("switchType",(msg,type)=>{
+    this.token = PubSub.subscribe("switchType",(msg,type)=>{
       // console.log('switchType', msg, type)
       // 找到对应歌曲的id
       let {currentIndex,recommendList} = this.data;
@@ -104,7 +104,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    PubSub.unsubscribe(this.token)
   },
 
   /**
