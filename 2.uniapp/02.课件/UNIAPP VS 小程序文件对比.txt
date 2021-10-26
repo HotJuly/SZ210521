@@ -1,0 +1,8 @@
+	UNIAPP					小程序
+manifest.json(相当于是脚手架配置文件)			project.config.json
+pages.json(具有属性pages,window)			app.json+所有页面的配置文件
+main.js+App.vue(注册小程序,全局样式)			app.js+app.wxss
+index.vue(组件的结构,样式,行为)				index.js+index.wxml+index.wxss
+
+
+unpackage文件夹,只有在编译成小程序运行的时候才会出现,禁止在该文件夹中进行任何修改
