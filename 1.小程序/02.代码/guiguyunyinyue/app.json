@@ -1,11 +1,9 @@
 {
   "pages": [
-    "pages/recommendSong/recommendSong",
     "pages/index/index",
     "pages/video/video",
     "pages/personal/personal",
-    "pages/login/login",
-    "pages/song/song"
+    "pages/login/login"
   ],
   "window": {
     "navigationBarBackgroundColor": "#d43c33",
@@ -40,6 +38,25 @@
   "requiredBackgroundModes": [
     "audio"
   ],
+  "subpackages":[
+    {
+      "root":"songs",
+      "name":"haha",
+      "pages":[
+        "pages/recommendSong/recommendSong",
+        "pages/song/song"
+      ],
+      "independent":true
+    }
+  ],
+  "preloadRule":{
+    "pages/index/index":{
+      "packages":[
+        "haha"
+      ],
+      "network":"all"
+    }
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

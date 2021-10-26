@@ -1,6 +1,7 @@
 // pages/song/song.js
 import PubSub from 'pubsub-js'
-import req from '../../utils/req.js'
+import moment from 'moment'
+import req from '../../../utils/req.js'
 const appInstance = getApp();
 Page({
 
@@ -18,7 +19,14 @@ Page({
     musicUrl: null,
 
     // 用于存储当前页面歌曲id
-    songId: null
+    songId: null,
+
+    // 用于存储歌曲当前播放时间
+    currentTime: "00:00",
+
+    // 用于存储歌曲总时长
+    durationTime: 0,
+
   },
 
   // 用于绑定与背景音频相关的事件监听
@@ -40,7 +48,7 @@ Page({
 
     // 用于监视背景音频暂停事件
     this.backgroundAudioManager.onPause(() => {
-      // console.log('onPause')
+      // console.log('onPause', appInstance.globalData.audioId , this.data.songId)
       if (appInstance.globalData.audioId === this.data.songId * 1) {
         // 如果当前页面展示歌曲和当前背景音频正在播放的是同一首歌,才执行以下代码
         this.setData({
@@ -51,6 +59,24 @@ Page({
 
       // 1.缓存当前正在播放的歌曲的状态
       appInstance.globalData.playState = false;
+    })
+
+    // 用于监视背景音频进度更新事件
+    this.backgroundAudioManager.onTimeUpdate(()=>{
+      // 在此处获取到当前歌曲时间,并更新到data中即可
+      // console.log('onTimeUpdate',this.backgroundAudioManager.currentTime)
+      // 进度条长度 = 当前时间/总时间
+
+      const currentTime = this.backgroundAudioManager.currentTime
+      this.setData({
+        currentTime:moment(currentTime*1000).format('mm:ss'),
+        currentWidth: currentTime / this.backgroundAudioManager.duration*100
+      })
+    })
+
+    //  用于监视当前背景音频播放结束
+    this.backgroundAudioManager.onEnded(() => {
+      PubSub.publish('switchType', "next")
     })
   },
 
@@ -66,8 +92,10 @@ Page({
   async getMusicDetail() {
     const result = await req('/song/detail', { ids: this.data.songId });
     this.setData({
-      songObj: result.songs[0]
+      songObj: result.songs[0],
+      durationTime: moment(result.songs[0].dt).format('mm:ss')
     })
+
 
     // 动态设置当前页面导航栏标题
     wx.setNavigationBarTitle({
@@ -103,6 +131,9 @@ Page({
     } else {
       this.backgroundAudioManager.src = this.data.musicUrl;
       this.backgroundAudioManager.title = this.data.songObj.name;
+
+      // 此行代码仅用于测试自动切歌功能
+      // this.backgroundAudioManager.startTime = 235;
 
       // 1.缓存当前正在播放的歌曲的状态
       appInstance.globalData.playState = true;
@@ -175,6 +206,8 @@ Page({
       this.setData({
         songId: id
       })
+
+      appInstance.globalData.audioId = id;
 
       await this.getMusicDetail();
       await this.getMusicUrl();
