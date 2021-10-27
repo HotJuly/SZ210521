@@ -1,0 +1,6 @@
+一共具有三种方案:
+	1.内置浏览器
+	2.配置代理规则
+		通过vue.config.js进行配置(配置参考vue-cli官网)
+	3.配置webpack代理规则
+		通过manifest.json->h5->devServer实现代理规则配置(配置参考webpack官网)

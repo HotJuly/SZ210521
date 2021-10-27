@@ -17,19 +17,54 @@
 	<!--	<div>123456
 			<i>123</i>
 		</div> -->
+		
+		<scroll-view 
+		scroll-x="true" 
+		enable-flex="true" 
+		class="navScroll" 
+		v-if="indexData.kingKongModule">
+			<view class="navItem active">
+				推荐
+			</view>
+			<view 
+			class="navItem"
+			v-for="item in indexData.kingKongModule.kingKongList"
+			:key="item.L1Id"
+			>
+				{{item.text}}
+			</view>
+		</scroll-view>
+		123
 	</view>
 </template>
 
 <script>
 	export default {
 		data() {
-			return {}
-		}	
-		,
-		onLoad() {
-			
-		}
-		,
+			return {
+				indexData:{}
+			}
+		},
+		// uniapp兼容小程序的生命周期和Vue的生命周期
+		// onLoad() {
+		// 	console.log('onLoad')
+		// },
+		// mounted(){
+		// 	console.log('mounted')
+		// },
+		created(){
+			uni.request({
+				// url:"http://localhost:3000/getIndexData",
+				url:"/api/getIndexData",
+				success:(res)=>{
+					// console.log('success',res.data)
+					// this.setData({
+						
+					// })
+					this.indexData=res.data
+				}
+			})
+		},
 		methods:{}
 		}
 	
@@ -77,7 +112,18 @@
 				font-size 24upx
 				margin 0 20upx
 				flex-shrink  0
-			
+		.navScroll
+			// display flex
+			white-space nowrap
+			.navItem
+				display inline-block
+				font-size 28upx
+				width 140upx
+				height 80upx
+				text-align center
+				line-height 80upx
+				&.active
+					border-bottom 4upx solid red
 		
 	
 </style>

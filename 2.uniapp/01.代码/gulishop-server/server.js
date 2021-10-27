@@ -35,6 +35,12 @@ router.get('/test',function(ctx,next){
 	ctx.body="/test success1"
 })
 
+const indexData = require('./datas/index.json');
+router.get('/getIndexData',function(ctx,next){
+	console.log('/getIndexData success')
+	ctx.body=indexData
+})
+
 
 //2.将服务器应用实例运行到指定端口,并进行监视
 app.listen(3000,function(error){
