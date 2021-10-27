@@ -35,10 +35,18 @@ router.get('/test',function(ctx,next){
 	ctx.body="/test success1"
 })
 
+// 用于返回首页推荐页面所需数据
 const indexData = require('./datas/index.json');
 router.get('/getIndexData',function(ctx,next){
 	console.log('/getIndexData success')
 	ctx.body=indexData
+})
+
+// 用于放回分类页面所需数据
+const categoryDatas = require('./datas/categoryDatas.json');
+router.get('/getCategoryDatas',function(ctx,next){
+	// console.log('/getIndexData success')
+	ctx.body=categoryDatas
 })
 
 
