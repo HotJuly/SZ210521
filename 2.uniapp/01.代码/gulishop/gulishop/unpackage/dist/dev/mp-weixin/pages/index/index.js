@@ -128,78 +128,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/CHH/Desktop/SZ210521/2.uniapp/01.代码/gulishop/gulishop/pages/index/index.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {
-      indexData: {} };
-
-  },
-  // uniapp兼容小程序的生命周期和Vue的生命周期
-  // onLoad() {
-  // 	console.log('onLoad')
-  // },
-  // mounted(){
-  // 	console.log('mounted')
-  // },
-  created: function created() {var _this = this;
-    uni.request({
-      // url:"http://localhost:3000/getIndexData",
-      url: "/api/getIndexData",
-      success: function success(res) {
-        // console.log('success',res.data)
-        // this.setData({
-
-        // })
-        _this.indexData = res.data;
-      } });
-
-  },
-  methods: {} };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js):\nSyntaxError: Unexpected token, expected \";\" (72:2)\n    at _class.raise (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:4051:15)\n    at _class.unexpected (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5382:16)\n    at _class.semicolon (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5366:40)\n    at _class.parseExportDefaultExpression (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8632:12)\n    at _class.parseExportDefaultExpression (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10363:65)\n    at _class.parseExport (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8571:31)\n    at _class.parseExport (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10341:50)\n    at _class.parseStatementContent (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7592:27)\n    at _class.parseStatementContent (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10378:58)\n    at _class.parseStatement (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7505:17)\n    at _class.parseBlockOrModuleBlockBody (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8073:23)\n    at _class.parseBlockBody (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8060:10)\n    at _class.parseTopLevel (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7470:10)\n    at _class.parse (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8915:17)\n    at Object.parse (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10946:38)\n    at Object.module.exports (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-mp-loader\\lib\\script-new.js:66:23)");
 
 /***/ }),
 /* 21 */

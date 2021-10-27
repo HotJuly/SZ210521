@@ -39,6 +39,7 @@
 </template>
 
 <script>
+	import req from '../../utils/req.js';
 	export default {
 		data() {
 			return {
@@ -52,21 +53,33 @@
 		// mounted(){
 		// 	console.log('mounted')
 		// },
-		created(){
-			uni.request({
-				// url:"http://localhost:3000/getIndexData",
-				url:"/api/getIndexData",
-				success:(res)=>{
-					// console.log('success',res.data)
-					// this.setData({
+		async created(){
+			// uni.request({
+			// 	// url:"http://localhost:3000/getIndexData",
+			// 	url:"/api/getIndexData",
+			// 	success:(res)=>{
+			// 		// console.log('success',res.data)
+			// 		// this.setData({
 						
-					// })
-					this.indexData=res.data
-				}
-			})
+			// 		// })
+			// 		this.indexData=res.data
+			// 	}
+			// })
+			let result = await req("/getIndexData");
+			this.indexData=result;
 		},
 		methods:{}
-		}
+		},
+		
+		// mutations:{
+		// 	A(){
+		// 		// 这是A程序写的mutation
+		// 	},
+		// 	// ...1000行代码
+		// 	A(){
+		// 		// 这是B程序猿写的mutation
+		// 	}
+		// }
 	
 </script>
 <!-- tab向后缩进
