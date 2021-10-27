@@ -49,6 +49,21 @@ router.get('/getCategoryDatas',function(ctx,next){
 	ctx.body=categoryDatas
 })
 
+// 用于返回首页分类页面所需数据
+const indexCateList = require('./datas/indexCateList.json');
+router.get('/getIndexCateList',async function(ctx,next){
+	// console.log('/getIndexData success')
+	// koa服务器不能使用定时器拖延返回的数据
+	// koa服务器如果想要延迟数据返回,那么路由回到函数必须返回一个promise对象
+	// setTimeout(()=>{
+	// 	ctx.body=indexCateList
+	// },2000)
+	await new Promise((resolve)=>{
+		setTimeout(resolve,2000)
+	})
+	ctx.body=indexCateList
+})
+
 
 //2.将服务器应用实例运行到指定端口,并进行监视
 app.listen(3000,function(error){

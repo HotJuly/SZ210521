@@ -23,19 +23,26 @@
 		enable-flex="true" 
 		class="navScroll" 
 		v-if="indexData.kingKongModule">
-			<view class="navItem active">
+			<view 
+			class="navItem"
+			:class="navIndex===-1?'active':''"
+			@click="changeNavIndex(-1)"
+			>
 				推荐
 			</view>
 			<view 
 			class="navItem"
-			v-for="item in indexData.kingKongModule.kingKongList"
+			:class="navIndex===index?'active':''"
+			v-for="(item,index) in indexData.kingKongModule.kingKongList"
 			:key="item.L1Id"
+			@click="changeNavIndex(index)"
 			>
 				{{item.text}}
 			</view>
 		</scroll-view>
 		<scroll-view scroll-y="true" class="contentScroll">
-			<Recommend></Recommend>
+			<Recommend v-if="navIndex===-1"></Recommend>
+			<CateList :navIndex="navIndex" v-else></CateList>
 		</scroll-view>
 		
 	</view>
@@ -45,10 +52,12 @@
 	import {mapState} from 'vuex';
 	import req from '../../utils/req.js';
 	import Recommend from '../../components/Recommend/Recommend.vue';
+	import CateList from '../../components/CateList/CateList.vue';
 	export default {
 		data() {
 			return {
 				// indexData:{}
+				navIndex:-1
 			}
 		},
 		// uniapp兼容小程序的生命周期和Vue的生命周期
@@ -75,6 +84,9 @@
 			this.$store.dispatch('getIndexData');
 		},
 		methods:{
+			changeNavIndex(index){
+				this.navIndex = index;
+			}
 		},
 		computed: {
 			// indexData(){
@@ -85,7 +97,8 @@
 			})
 		},
 		components:{
-			Recommend
+			Recommend,
+			CateList
 		}
 		}
 		// mutations:{
