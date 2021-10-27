@@ -34,13 +34,17 @@
 				{{item.text}}
 			</view>
 		</scroll-view>
-		123
+		<scroll-view scroll-y="true" class="contentScroll">
+			<Recommend></Recommend>
+		</scroll-view>
+		
 	</view>
 </template>
 
 <script>
 	import {mapState} from 'vuex';
 	import req from '../../utils/req.js';
+	import Recommend from '../../components/Recommend/Recommend.vue';
 	export default {
 		data() {
 			return {
@@ -79,6 +83,9 @@
 			...mapState({
 				indexData:state=>state.home.indexData
 			})
+		},
+		components:{
+			Recommend
 		}
 		}
 		// mutations:{
@@ -147,6 +154,16 @@
 				line-height 80upx
 				&.active
 					border-bottom 4upx solid red
+		.contentScroll
+		// 小程序 height=屏幕百分百高度 - header高度 - nav高度
+		//  h5 height=屏幕百分百高度 - header高度 - nav高度 - 导航栏高度 - tabBar高度
+			height calc(100vh - 80upx - 84upx - var(--window-top) - var(--window-bottom))
+			// /* #ifdef H5 */
+			// height calc(100vh - 80upx - 84upx - 88upx - 100upx)
+			// /* #endif */
+			// /* #ifdef MP-WEIXIN */
+			// height calc(100vh - 80upx - 84upx)
+			// /* #endif */
 		
 	
 </style>
