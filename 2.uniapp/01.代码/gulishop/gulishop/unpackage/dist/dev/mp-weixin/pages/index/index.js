@@ -128,9 +128,102 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/CHH/Desktop/SZ210521/2.uniapp/01.代码/gulishop/gulishop/pages/index/index.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js):\nSyntaxError: Unexpected token, expected \";\" (72:2)\n    at _class.raise (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:4051:15)\n    at _class.unexpected (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5382:16)\n    at _class.semicolon (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5366:40)\n    at _class.parseExportDefaultExpression (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8632:12)\n    at _class.parseExportDefaultExpression (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10363:65)\n    at _class.parseExport (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8571:31)\n    at _class.parseExport (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10341:50)\n    at _class.parseStatementContent (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7592:27)\n    at _class.parseStatementContent (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10378:58)\n    at _class.parseStatement (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7505:17)\n    at _class.parseBlockOrModuleBlockBody (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8073:23)\n    at _class.parseBlockBody (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8060:10)\n    at _class.parseTopLevel (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7470:10)\n    at _class.parse (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8915:17)\n    at Object.parse (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10946:38)\n    at Object.module.exports (F:\\devtool\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-mp-loader\\lib\\script-new.js:66:23)");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 29));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 26);
+var _req = _interopRequireDefault(__webpack_require__(/*! ../../utils/req.js */ 31));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+{
+  data: function data() {
+    return {
+      // indexData:{}
+    };
+  },
+  // uniapp兼容小程序的生命周期和Vue的生命周期
+  // onLoad() {
+  // 	console.log('onLoad')
+  // },
+  // mounted(){
+  // 	console.log('mounted')
+  // },
+  created: function () {var _created = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              // uni.request({
+              // 	// url:"http://localhost:3000/getIndexData",
+              // 	url:"/api/getIndexData",
+              // 	success:(res)=>{
+              // 		// console.log('success',res.data)
+              // 		// this.setData({
+
+              // 		// })
+              // 		this.indexData=res.data
+              // 	}
+              // })
+              // let result = await req("/getIndexData");
+              // this.indexData=result;
+              this.$store.dispatch('getIndexData');case 1:case "end":return _context.stop();}}}, _callee, this);}));function created() {return _created.apply(this, arguments);}return created;}(),
+
+  methods: {},
+
+  computed: _objectSpread({},
+
+
+
+  (0, _vuex.mapState)({
+    indexData: function indexData(state) {return state.home.indexData;} }))
+
+
+
+  // mutations:{
+  // 	A(){
+  // 		// 这是A程序写的mutation
+  // 	},
+  // 	// ...1000行代码
+  // 	A(){
+  // 		// 这是B程序猿写的mutation
+  // 	}
+  // }
+};exports.default = _default;
 
 /***/ }),
 /* 21 */

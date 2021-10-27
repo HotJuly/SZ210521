@@ -39,11 +39,12 @@
 </template>
 
 <script>
+	import {mapState} from 'vuex';
 	import req from '../../utils/req.js';
 	export default {
 		data() {
 			return {
-				indexData:{}
+				// indexData:{}
 			}
 		},
 		// uniapp兼容小程序的生命周期和Vue的生命周期
@@ -65,12 +66,21 @@
 			// 		this.indexData=res.data
 			// 	}
 			// })
-			let result = await req("/getIndexData");
-			this.indexData=result;
+			// let result = await req("/getIndexData");
+			// this.indexData=result;
+			this.$store.dispatch('getIndexData');
 		},
-		methods:{}
+		methods:{
 		},
-		
+		computed: {
+			// indexData(){
+			// 	return this.$store.state.home.indexData;
+			// },
+			...mapState({
+				indexData:state=>state.home.indexData
+			})
+		}
+		}
 		// mutations:{
 		// 	A(){
 		// 		// 这是A程序写的mutation
