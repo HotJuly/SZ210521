@@ -1,0 +1,14 @@
+{
+  "cartList": [
+    {
+      "id": "001",
+      "name": "iphone13",
+      "price": 9999
+    },
+    {
+      "id": "003",
+      "name": "iphone14",
+      "price": 99999
+    }
+  ]
+}
