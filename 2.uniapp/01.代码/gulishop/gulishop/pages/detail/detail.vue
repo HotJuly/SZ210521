@@ -4,17 +4,17 @@
 			<icon class="iconfont icon-shouye2"></icon>
 			<text>网易严选 </text>
 			<view class="shopCart">
-				<icon class="iconfont icon-gouwuche2"></icon>
+				<icon class="iconfont icon-gouwuche2" @click="toCart"></icon>
 				<text class="count">5</text>
 			</view>
 		</view>
 		
 		<!-- 内容区 -->
 		<scroll-view class="content" scroll-y="true">
-			<image class="detailImg" src="https://yanxuan-item.nosdn.127.net/c2eeb1b872af1b8efc179a7515aacdaa.png" mode=""></image>
+			<image class="detailImg" :src="goodInfo.listPicUrl" mode=""></image>
 			<view class="tag">暖冬特惠</view>
-			<text class="price">￥ 209</text>
-			<view class="info">男式色拉姆内衣套装2.0</view>
+			<text class="price">￥ {{goodInfo.retailPrice}}</text>
+			<view class="info">{{goodInfo.name}}</view>
 			
 			
 			<!-- 准备内容 -->
@@ -30,25 +30,45 @@
 		<view class="detailFooter">
 			<image class="service" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/detail-kefu-d10f0489d2.png?imageView&type=webp" mode=""></image>
 			<view class="btn buyNow">立即购买</view>
-			<view class="btn addShopCart">加入购物车</view>
+			<view class="btn addShopCart" @click="addShopItem">加入购物车</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import {mapMutations} from 'vuex';
+	import req from '../../utils/req.js';
 	export default {
 		data() {
 			return {
-				
+				goodInfo:{}
 			}
 		},
 		// onLoad(options){
 			
 		// }
-		mounted(options){
+		async mounted(options){
 			// 框架传递参数的手段,1形参,2this对象
 			// 在uniapp的mounted生命周期中,获取路由传参的数据需要通过this.$mp实现获取
-			console.log('options',this)
+			// console.log('options',this)
+			const {goodId}= this.$mp.query;
+			const good = await req("/getGoodDetail",{goodId});
+			this.goodInfo = good;
+		},
+		methods:{
+			addShopItem(){
+				// console.log('addShopItem')
+				uni.showToast({
+					title:"商品添加成功"
+				})
+				this.ADDSHOPITEMMUTATION(this.goodInfo)
+			},
+			toCart(){
+				uni.switchTab({
+					url:"/pages/cart/cart"
+				})
+			},
+			...mapMutations(["ADDSHOPITEMMUTATION"])
 		}
 	}
 </script>

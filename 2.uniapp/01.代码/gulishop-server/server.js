@@ -65,6 +65,24 @@ router.get('/getIndexCateList',async function(ctx,next){
 })
 
 
+
+// 用于返回商品详细数据
+const goods = require('./datas/goods.json');
+router.get('/getGoodDetail',function(ctx,next){
+	// console.log('/getGoodDetail success',ctx.query)
+	// 1.获取到商品id
+	const {goodId} = ctx.query;
+	
+	//2.通过商品Id从商品数组中找到对应商品信息
+	const good = goods.find((good)=>{
+		return good.id === goodId >>> 0
+	})
+	
+	// 3.返回找到的商品
+	ctx.body=good
+})
+
+
 //2.将服务器应用实例运行到指定端口,并进行监视
 app.listen(3000,function(error){
 	if(error){
