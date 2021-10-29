@@ -22,10 +22,14 @@
 			<view class="cartList">
 				<view 
 				class="cartItem"
-				v-for="shopItem in cartList"
+				v-for="(shopItem,index) in cartList"
 				:key="shopItem.id"
 				>
-					<text class='iconfont icon-xuanzhong selected'></text>
+					<text 
+					class='iconfont icon-xuanzhong' 
+					:class="shopItem.selected?'selected':''"
+					@click="changeSelected(!shopItem.selected,index)"
+					></text>
 					<view class="shopItem">
 						<image class="shopImg" :src="shopItem.listPicUrl" mode=""></image>
 						<view class="shopInfo">
@@ -35,16 +39,20 @@
 					</view>
 					<!-- 控制数量 -->
 					<view class="countCtrl">
-						<text class="add"> + </text>
+						<text class="add" @click="changeCount(true,index)"> + </text>
 						<text class="count"> {{shopItem.count}} </text>
-						<text class="del"> - </text>
+						<text class="del" @click="changeCount(false,index)"> - </text>
 					</view>
 				</view>
 				
 			</view>
 			<!-- 底部下单 -->
 			<view class="cartFooter">
-				<text class='iconfont icon-xuanzhong selected'></text>
+				<text 
+				class='iconfont icon-xuanzhong' 
+				:class="isSelectedAll?'selected':''"
+				@click="changeAllSelected(!isSelectedAll)"
+				></text>
 				<text class="allSelected">已选 3</text>
 				<view class="right">
 					<text class="totalPrice">合计: ￥1000</text>
@@ -57,7 +65,7 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex';
+	import {mapState,mapMutations,mapGetters} from 'vuex';
 	export default {
 		data() {
 			return {
@@ -78,12 +86,25 @@
 				uni.navigateTo({
 					url:"/pages/login/login"
 				})
-			}
+			},
+			changeCount(type,index){
+				// console.log('changeCount',type,index)
+				this.CHANGECOUNTMUTATION({type,index})
+				// this.$store.commit("CHANGECOUNTMUTATION",type,index)
+			},
+			changeSelected(selected,index){
+				this.CHANGESELECTEDMUTATION({selected,index});
+			},
+			changeAllSelected(selected){
+				this.CHANGEALLSELECTEDMUTATION(selected);
+			},
+			...mapMutations(["CHANGECOUNTMUTATION","CHANGESELECTEDMUTATION","CHANGEALLSELECTEDMUTATION"])
 		},
 		computed:{
 			...mapState({
 				cartList:state=>state.cart.cartList
-			})
+			}),
+			...mapGetters(["isSelectedAll"])
 		}
 	}
 </script>

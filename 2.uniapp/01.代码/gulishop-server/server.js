@@ -1,6 +1,9 @@
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
 
+const Fly=require("flyio/src/node");
+const fly=new Fly;
+
 // 1.创建服务器应用实例对象
 // const app = express()
 const app = new Koa();
@@ -62,6 +65,23 @@ router.get('/getIndexCateList',async function(ctx,next){
 		setTimeout(resolve,2000)
 	})
 	ctx.body=indexCateList
+})
+
+
+// 用于放回分类页面所需数据
+router.get('/getOpenId',async function(ctx,next){
+	// console.log('/getOpenId success',ctx.query)
+	const code = ctx.query.code;
+	const appId = 'wxe5931a68ea66cece';
+	const appSecret='15bd901dc19933bd216dfc4eeb123579';
+	
+	const url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${appSecret}&js_code=${code}&grant_type=authorization_code`;
+	
+	const {data} = await fly.get(url);
+	// console.log('result',result)
+	const openId = JSON.parse(data).openid;
+	// console.log('openId',openId)
+	ctx.body=openId
 })
 
 

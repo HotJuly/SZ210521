@@ -11,6 +11,8 @@
 	"libVersion": "2.15.0",
 	"appid": "wxe5931a68ea66cece",
 	"projectname": "gulishop",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

@@ -2,6 +2,7 @@ import Vue from 'vue';
 const state = {
 	cartList: [
 		{
+			"selected":false,
 			"count":9,
 			"promId": 0,
 			"showPoints": false,
@@ -76,6 +77,7 @@ const state = {
 			"itemSizeTableFlag": false
 		},
 		{
+			"selected":true,
 			"count":3,
 			"promId": 0,
 			"showPoints": false,
@@ -165,20 +167,64 @@ const mutations = {
 	   
 	   if(shopItem){
 		   shopItem.count+=1
-			console.log('+1',shopItem)
+			// console.log('+1',shopItem)
 	   }else{
 		   state.cartList.push(good);
 		   // good.count=1;
-		   Vue.set(good,'count',1)
-			console.log('=1',good)
+		   Vue.set(good,'count',1);
+		   Vue.set(good,'selected',true);
+			// console.log('=1',good)
 	   }
+	},
+	CHANGECOUNTMUTATION(state,{type,index}){
+		/*
+			需求:当用户点击+/-号时,修改对应商品的数量
+				如果用户点击-号,如果该商品数量为1,那么直接删除该商品
+		*/
+		// console.log('CHANGECOUNTMUTATION',type,index)
+		const cartList = state.cartList;
+		if(type){
+			cartList[index].count+=1;
+		}else{
+			if(cartList[index].count<=1){
+				cartList.splice(index,1);
+			}else{
+				cartList[index].count-=1;
+			}
+		}
+	},
+	CHANGESELECTEDMUTATION(state,{selected,index}){
+		// console.log('CHANGESELECTEDMUTATION',selected,index)
+		state.cartList[index].selected=selected;
+	},
+	CHANGEALLSELECTEDMUTATION(state,selected){
+		// console.log('CHANGEALLSELECTEDMUTATION')
+		/*
+			将购物车中所有的商品选中状态都更新为与全选按钮相同
+		*/
+	   const result = state.cartList.forEach((shopItem)=>{
+		   shopItem.selected = selected;
+		   // return 123;
+	   })
+	   // console.log('result',result)
 	}
 }
 
 const actions = {}
 
 const getters = {
-
+	isSelectedAll(state){
+		/*
+			如果购物车中所有的商品都是选中状态,那么全选按钮也为选中状态
+			如果购物车中有一个以上的商品是未选中状态,那么全选按钮也为未选中状态
+			
+			如果购物车中没有商品,那么全选按钮就为未选中状态
+			返回值:布尔值
+		*/
+	   return state.cartList.length&&state.cartList.every((shopItem)=>{
+		return shopItem.selected
+	   })
+	}
 }
 
 export default {

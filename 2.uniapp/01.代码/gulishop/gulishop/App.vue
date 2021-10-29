@@ -1,13 +1,24 @@
 <script>
+	import req from './utils/req.js'
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+			// console.log('App Launch')
+			wx.login({
+				async success({code}){
+					// console.log('login',code)
+					const openId = await req('/getOpenId',{code});
+					uni.setStorage({
+						key:"token",
+						data:openId
+					})
+				}
+			})
 		},
 		onShow: function() {
-			console.log('App Show')
+			// console.log('App Show')
 		},
 		onHide: function() {
-			console.log('App Hide')
+			// console.log('App Hide')
 		}
 	}
 </script>

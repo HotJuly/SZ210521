@@ -27,11 +27,12 @@
 					desc:"用于测试登录功能",
 					success:(res)=>{
 						// console.log('res',res)
-						const {rawData} =res;
+						const {rawData,userInfo} =res;
 						uni.setStorage({
 							key:"userInfoStr",
 							data:rawData
 						})
+						console.log('userInfo',userInfo)
 						uni.reLaunch({
 							url:"/pages/personal/personal"
 						})
