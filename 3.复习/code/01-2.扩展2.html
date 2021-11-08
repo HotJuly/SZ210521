@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            面试时注意点:
+                只要遇到原型链相关的面试题,一定要注意原型对象是否修改了地址值,修改的时间
+        
+        */
+        function person(name){
+            this.name = name;
+        }
+
+        person.prototype = {
+            c1:3
+        };
+
+        var p1 =new person("xiaoming");
+
+        console.log(p1,p1.c1)
+    </script>
+</body>
+</html>

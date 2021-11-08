@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            万物皆对象
+            所有的实例对象都是Object创建的
+            所有的函数都是Function创建的,包括Function自身(????)
+            函数是一等公民,因为他即是函数,又是对象
+                如何证明一个函数是对象?
+                    Function.prototype
+                    Function.__proto__
+
+            js中的语法糖:
+                1.{}    =>      new Object
+                    {}==={}
+                2.[]    =>      new Array
+                3.function Foo(){}  =>     new Function("")
+                4.async await
+        */
+
+        function Foo () {
+            return 123;
+        }
+        const f1 = new Foo()
+
+        const o1 = new Object()
+        const o2 = {}
+
+        // Foo instanceof Object  //true
+        // Foo instanceof Function  //true
+        // Object instanceof Object  //true
+        // Function instanceof Function //true
+        // Function instanceof Object  //true
+
+        // Object instanceof Foo   //false
+        // f1 instanceof Function  //false
+        // f1 instanceof Object    //true
+
+        /*
+            js中使用c语言写的东西:Object,Function,Function.prototype
+            终极原型链图中,几条特殊的线(其实都是作者加上去的)
+                1.Function.__proto__ ===   Function.prototype
+                    为了让Function函数可以使用到所有函数都具有的公共方法(例如:call,apply等)
+                2.Object.__proto__ ===   Function.prototype
+                    同上
+                3.Function.prototype.__proto__ === Object.prototype
+                    因为函数既是函数又是对象,必须要能使用对象的所有方法,如果没有这条线,那么函数的原型链终点就变成了Function的原型对象
+                4.Object.prototype.__proto__ === null
+                    如果没有这条线,js的原型链将进入死循环
+                    因为Object的原型对象是Object创建的
+        
+        */
+       console.log(Foo)
+       console.log(Object)
+       console.log(Function,Function.prototype)
+    </script>
+</body>
+</html>

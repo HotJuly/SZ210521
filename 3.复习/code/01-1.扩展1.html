@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 包装类对象特殊情况
+        var str = "hello";
+        // 当前代码不会出错,该行代码会创建一个对应的包装类对象,当赋值/读取结束之后,该对象会被销毁
+        str.count  = "world";
+        console.log(str + str.count)
+
+        var num = 123;
+        num.count  = 4;
+        console.log(num + num.count)
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            现有变量data,内部存放数据,请判断出该变量存放的数据类型
+        */
+    //    var data = [123,3];
+       var data = new Date();
+    //    console.log(data instanceof Array);
+    function getType(data){
+        // return Object.prototype.toString.call(data);
+        // return Object.prototype.toString.call(data).split(" ")[1].replace("]","");
+        // return Object.prototype.toString.call(data).substring(8).replace("]","");
+        return {}.toString.call(data).substring(8).replace("]","");
+    }
+    console.log(getType(data))
+    </script>
+</body>
+</html>

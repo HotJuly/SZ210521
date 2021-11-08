@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*  
+            如何区分一个函数是否是构造函数
+                名字首字母是否大写(约定俗成的规矩)
+
+                实际上,区分一个函数是否是构造函数,只能在调用的时候进行区分
+                    使用new调用一个函数,那么该函数就是构造函数
+        */
+
+        /*
+            js引擎中:内存分为堆内存和栈内存
+            栈内存中,可以存储基本数据类型,变量(函数名),地址值
+            堆内存中,可以存储对象数据类型,基本数据类型
+        
+            标识,包括了函数名和变量名
+        */
+
+        /*
+            1.每个构造函数都有显示原型属性:prototype
+                实际上,每个函数都有原型对象,只是如果不是构造函数就是去意义了
+            2.每个实例对象都有隐式原型属性:__proto__
+            3.实例对象的隐式原型指向构造函数的显示原型
+            4.每个原型对象都有constructor属性
+        
+            如果实例对象使用一个属性,如果该属性自身没有,会顺着隐式原型连向上查找
+        */
+        function person(name){
+            this.name = name;
+            // return this;
+            return {
+                name:777
+            };
+        }
+        var p1 =new person("xiaoming");
+
+        // function a(){}
+        // console.log(p1)
+
+        /*
+            new关键字做的事情:
+                1.创建this变量
+                2.给this变量赋值一个全新对象
+                3.将构造函数!!!当前的!!!显示原型属性的值复制一份存入实例对象的隐式原型属性中
+                4.默认返回this
+                    如果return一个基本数据类型,那么还是返回this
+                    如果return一个对象数据类型,那么返回的是return的对象
+        */
+
+        /*
+            instanceof的判断与原型链有关
+            A instanceof B
+            A.__proto__ === B.prototype
+            A.__proto__.__proto__ === B.prototype
+        */
+
+        function person2(name){
+            var this1;
+
+            
+            // this1.__proto__ = Object.prototype
+            this1 = new Object();
+
+            this1.__proto__ = person2.prototype;
+
+            this1.name = name;
+
+            return this1
+        }
+        var p2 = person2("xiaoming");
+        
+        console.log(p2 instanceof person2)
+    </script>
+</body>
+</html>
