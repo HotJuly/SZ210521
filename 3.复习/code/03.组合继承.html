@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            笔试基本只考组合继承和class继承
+            
+        */
+        /* 
+         使用构造函数和ES6的类设计并测试以下需要
+         需求1: 
+             现在1个人, 有姓名与年龄(值自己指定), 能自我介绍自己的姓名和年龄, 能得到当前的总人数
+         需求2: 
+             现在又有了一个学生, 它有身价的属性, 能介绍它的所有信息
+         */
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            // this.sayHello=function(){
+            //     console.log(`大家好,我叫${this.name},我今年${this.age}岁`)
+            // }
+            Person.prototype.count+=1;
+        }
+        Person.prototype.sayHello = function () {
+            console.log(`大家好,我叫${this.name},我今年${this.age}岁`)
+        }
+        Person.prototype.count = 0;
+
+        var p1 = new Person("xiaoming", 23);
+        // p1.sayHello();
+        // console.log(p1,p1.count)
+
+
+        /*
+            让Student继承Person
+                1.Student的实例对象需要获取到Person的所有属性
+                2.Student的实例对象需要获取到Person的所有方法
+        
+        */
+
+        function Student(name,age,price){
+            // this.name = name;
+            // this.age = age;
+            // 1.借调父类,可以让当前Student的实例获取到Person的所有属性
+            Person.call(this,name,age);
+            this.price = price;
+        }
+
+        // 2.通过将当前构造函数的显示原型属性指向Person的实例对象,方便Student的实例对象,后续使用Person的方法
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+
+
+        //重写:父类身上具有方法,但是该方法不能满足当前子类需要,子类重新定义同名方法
+        Student.prototype.sayHello=function(){
+            console.log(`大家好,我叫${this.name},我今年${this.age}岁,我有${this.price}钱`)
+        }
+
+        var s1 = new Student("小王",18,800000000000000);
+        // console.log(s1)
+        s1.sayHello();
+
+    </script>
+</body>
+
+</html>

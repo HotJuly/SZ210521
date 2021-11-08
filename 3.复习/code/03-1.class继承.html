@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+         使用构造函数和ES6的类设计并测试以下需要
+         需求1: 
+             现在1个人, 有姓名与年龄(值自己指定), 能自我介绍自己的姓名和年龄, 能得到当前的总人数
+         需求2: 
+             现在又有了一个学生, 它有身价的属性, 能介绍它的所有信息
+
+            ES6的class语法,其实就是组合继承的语法糖
+                如果在class中添加属性,该属性会添加到实例对象身上(如果使用=号赋值,那么该属性就会添加到实例对象上)
+                如果在class中添加方法,该方法会添加到原型对象身上(如果使用ES6方法的简写,那么该方法就会添加到原型对象上)
+                如果在class中使用static关键字,该属性会添加到构造函数身上,作为静态属性存在
+
+                super的使用方法:
+                    1.作为函数使用
+                        在constructor,super相当于Person.call,借调父类加工子类实例对象
+                    2.作为对象使用
+                        在constructor或者当前类的方法,super相当于父类的原型对象
+                        在静态方法中,super相当于父类的构造函数本身
+                    
+            方法和属性是什么关系?
+                方法是特殊的属性,特殊在属性值类型是函数
+         */
+
+        class Person{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+                Person.count+=1;
+            }
+
+            static sayHello(){
+                console.log(`大家好,我叫${this.name},我今年${this.age}岁`)
+            }
+
+            static count = 0;
+        }
+
+        var p1 =new Person("小明",66);
+
+        class Student extends Person{
+            constructor(name,age,price){
+                // this.name=name;
+                // this.age=age;
+                // 此行代码就相当于Person.call(this,name,age)
+                super(name,age)
+                this.price=price;
+            }
+
+            static sayHello(){
+                super.sayHello();
+                console.log(`大家好,我叫${this.name},我今年${this.age}岁,我有${this.price}钱`)
+            }
+        }
+
+        var s1= new Student("老王",88,100);
+        console.log(s1)
+        Student.sayHello();
+        // s1.sayHello();
+    </script>
+</body>
+</html>
