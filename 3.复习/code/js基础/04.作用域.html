@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            词法作用域:当前函数所能看到的变量,与当前函数声明位置有关,与调用位置无关
+            动态作用域:根据调用时候的位置,来决定所能看到的变量
+        */
+       /*
+            标识,变量名和函数名
+            作用域相关的:
+                1.预解析(声明提升)
+                    变量提升:变量声明提升,是将标识声明提升,标识赋值留在原地
+                        注意:函数表达式属于变量提升
+                    函数提升:函数声明提升,是将标识声明和标识赋值操作都同时进行提升
+                2.提升到哪里?
+                    提升至当前作用域最顶端
+                注意:
+                    一定要分清楚变量声明和变量赋值
+                    对象的方法不会被预解析
+                    
+       */
+        // function a(){
+        //     var c = 1;
+        //     function b(){
+        //         console.log(c)
+        //     }
+        //     return b;
+        // }
+        // var b1 = a();
+        // b1();
+
+        // function b(){
+        //     return 123;
+        // }
+        // var a;
+        // // var b = new Function("return 123;")
+        // // var c;
+        // // c=1;
+
+        // // var a = b();
+        // a=b();
+
+        // console.log(a);
+
+
+        // function d(){
+
+        //     console.log(a)
+        //     var a= 3;
+        // }
+
+        function a(){
+            return 234;
+        }
+        // var a =2;
+        var a;
+        a=2;
+        // 此代码为函数表达式,在预解析中按变量提升计算
+
+        // var a = function (){return 123};
+        var a;
+        a=function (){return 123};
+    </script>
+</body>
+</html>

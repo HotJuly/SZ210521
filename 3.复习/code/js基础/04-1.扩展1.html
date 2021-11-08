@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var obj={
+        //     a:1,
+        //     fn:function a(){
+        //         var a=3;
+        //         console.log(a);
+        //     }
+        // }
+        // function b(){
+        //     var a=4;
+        //     return a;
+        // }
+        // var a = 2;
+        // b();
+        // obj.fn();
+
+        /*
+            本题属于js漏洞,本题只能单独理解
+            该写法不符合js语法规范,
+                该函数名只能在函数内部课件,而且结果不能修改
+        */
+        
+        // function b(){
+        //     var a;
+        //     a=4;
+        //     return a;
+        // }
+        // var obj;
+        // var a;
+        // obj={
+        //     a:1,
+        //     fn:function a(){
+        //         a=3;
+        //         console.log(a);
+        //     }
+        // }
+        // a = 2;
+        // b();
+        // obj.fn();
+        // console.log(a)
+
+        (function a(){
+            console.log(a);
+            a=4;
+            console.log(a)
+        })();
+    </script>
+</body>
+</html>
