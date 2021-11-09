@@ -18,7 +18,7 @@
 
 // }
 
-const fs = require('fs');
+// const fs = require('fs');
 
 
 // setTimeout(()=>{
@@ -52,17 +52,31 @@ const fs = require('fs');
 //     console.log('setTimeout1')
 // },0)
 
-Promise.resolve().then(()=>{
-    console.log('then1')
+// Promise.resolve().then(()=>{
+//     console.log('then1')
     
-    process.nextTick(()=>{
-        console.log('nextTick')
-    })
+//     process.nextTick(()=>{
+//         console.log('nextTick')
+//     })
 
-    Promise.resolve().then(()=>{
-        console.log('then2')
-    })
-})
+//     Promise.resolve().then(()=>{
+//         console.log('then2')
+//     })
+// })
+
+// for(var i =0;i<700000;i++){
+
+// }
+// setTimeout(()=>{
+//     console.log('setTimeout1')
+// },0)
+
+// for(var i =0;i<700000;i++){
+
+// }
+// setImmediate(()=>{
+//     console.log('setImmediate1')
+// })
 
 
 
