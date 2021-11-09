@@ -21,13 +21,62 @@
                 3.新数组中的每一项的结果,由回调函数的返回值决定
         */
 
-        // var obj = {
-        //     name:"xiaoming",
-        //     age:18
+        // Object.prototype.map=function(cb){
+        //     // this->obj对象
+        //     const newObj = {};
+            
+        //     // 获取到当前对象身上所有的属性名
+        //     const keys = Object.keys(this);
+        //     // console.log(keys)
+
+        //     var that = this;
+        //     // 遍历属性名组成的数组
+        //     keys.forEach(function(key){
+        //         // 每有一个属性名,就会调用一次回调函数
+        //         newObj[key] = cb(that[key],key)
+        //     })
+
+        //     return newObj;
         // }
+
+        // Object.prototype.map=function(cb){
+        //     // this->obj对象
+        //     const newObj = {};
+            
+        //     // 获取到当前对象身上所有的属性名
+        //     for(let key in this){
+        //         // for...in是可以遍历当前对象的所有的可枚举属性,包括原型链上的
+                
+        //         // 如何判断某个属性是否属于当前对象
+        //         if(this.hasOwnProperty(key)){
+        //             newObj[key] = cb(this[key],key)
+        //         }
+        //         // console.log(this.hasOwnProperty("map"))
+        //     }
+
+        //     return newObj;
+        // }
+
+
+        var obj = {
+            name:"xiaoming",
+            age:18
+        }
         // var newObj = obj.map((value,key)=>{
         //     return value+="1";
         // })
+        // console.log(obj,newObj)
+        
+        // console.log(obj===JSON.parse(JSON.stringify(obj)))
+        const newObj = JSON.parse(JSON.stringify(obj),function(key,value){
+            // console.log(key,value)
+            if(key){
+                return value+="2"
+            }else{
+                return value;
+            }
+        })
+        console.log(newObj)
         /*
             newObj ={
                 name:"xiaoming1",
@@ -36,11 +85,11 @@
         
         */
 
-        var arr = [1,2,3];
-        var newArr = arr.map((item,index)=>{
-            return item*3
-        })
-        console.log(newArr)
+        // var arr = [1,2,3];
+        // var newArr = arr.map((item,index)=>{
+        //     return item*3
+        // })
+        // console.log(newArr)
 
     </script>
 </body>

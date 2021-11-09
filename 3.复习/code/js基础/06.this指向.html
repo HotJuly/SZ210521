@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         /*
@@ -34,21 +36,214 @@
                 4.React的方法
                     如果方法是箭头函数,this指向当前组件实例
                     如果方法是普通函数,this指向undefined
+                5.ES6新增箭头函数
+                    箭头函数会使用外层作用域的this
+                    箭头函数没有自己的this
+
+                面试题:
+                    1.call,apply或者bind能不能修改箭头函数的this指向?
+                        不能,因为箭头函数没有自己的this
+
+                    2.箭头函数能不能被构造调用?
+                        不能,因为他没有自己的this
+
+                    3.箭头函数有没有原型对象?
+                        没有
+
         */
-        function a(){
-            console.log(this)
+        // function a(){
+        //     console.log(this)
+        // }
+
+        // a();
+
+        // new a();
+
+        // var obj={
+        //     fn:123
+        // }
+        // obj.fn();
+
+        // const a = ()=>{
+        //     console.log(this)
+        // }
+
+        // function b(fn){
+        //     fn();
+        // }
+        // a.call(obj);
+        // new a();
+        // b(a);
+
+        /*
+            手写call,apply方法
+            call和apply的区别:
+                相同点:
+                    1.都能改变函数的this指向
+                        注意:这个改变是临时,仅限于本次执行函数
+
+                    2.第一个参数都是强行指定的this指向
+                        如果没传就是window对象
+
+                    3.都会返回被借调函数的执行结果
+
+                    4.都会同步调用被借调函数
+                不同点:
+                    1.接收参数数量不同
+                        call可接收参数数量:0->无限大
+                            所有参数都以逗号隔开,第二个参数开始都会作为实参传递给被借调函数
+                        apply可接收参数数量:0->2
+                            所有参数都以逗号隔开,但是第二个参数如果有传,必须是数组类型,会将该数组解构之后传递给被借调函数
+        */
+
+        // fn();
+        // fn.call(obj,1,2,3);
+        // fn.apply(obj,[1,2,3]);
+        // fn();
+
+        // Function.prototype.myCall=function(thatThis,...args){
+        //     /*
+        //         this->就是被借调函数fn
+        //         thatThis->才是后续强行指定的this指向
+        //     */
+        //     if(thatThis===undefined||thatThis===null){
+        //         thatThis = window;
+        //     }
+        //     // console.log(11,args)
+
+        //     thatThis._fn = this;
+
+        //     const result = thatThis._fn(...args);
+
+        //     delete thatThis._fn;
+
+        //     return result;
+        //     // if(thatThis==undefined){
+
+        //     // }
+        // // }
+
+        // Function.prototype.myCall=function(thatThis){
+        //     /*
+        //         this->就是被借调函数fn
+        //         thatThis->才是后续强行指定的this指向
+        //     */
+
+        //     if(thatThis===undefined||thatThis===null){
+        //         thatThis = window;
+        //     }
+
+        //     var arr= [];
+
+        //     for(var i=1;i<arguments.length;i++){
+        //         arr.push(arguments[i])
+        //     }
+        //     // console.log(11,arr)
+
+        //     thatThis._fn = this;
+
+        //     const result = eval('thatThis._fn('+arr.toString()+')');
+
+        //     delete thatThis._fn;
+
+        //     return result;
+        //     // if(thatThis==undefined){
+
+        //     // }
+        // }
+
+        // console.log(fn.myCall(obj,2,3,4));
+
+
+
+        // var obj = {
+        //     name:"xiaoming"
+        // }
+
+        // function fn(a,b,c){
+        //     console.log(this,a,b,c)
+        //     return a+b+c;
+        // }
+
+        /*
+            call和bind的区别:
+                相同点:
+                    1.接收参数数量都是0->无限大
+                        第一个参数都是this指向
+                        第二个参数开始都会传给被借调函数作为实参使用
+                            bind的参数可以分2次传入
+                不同点:
+                    1.返回值不同
+                        call的返回值是被借调函数调用的结果
+                        bind的返回值是一个全新的函数
+                    2.调用时间
+                        call会同步调用被借调函数
+                        bind只会返回一个函数,什么时候调用,由开发者决定
+                            bind不会改变被借调函数的this指向,他只会根据被借调函数生成一个全新的函数,同时修改该函数的this
+        */
+
+        // fn.call(obj,1,2,3);
+        // console.log(1)
+        // console.log(fn.bind(obj,1,2,3));
+
+        // Function.prototype.myBind = function(thatThis,...args){
+        //     /*
+        //         this->被借调函数fn
+        //         thatThis->强行指定的this对象
+
+        //     */
+        //     if(thatThis==undefined){
+        //         thatThis=window;
+        //     }
+        //     var that= this;
+        //     return function(...args2){
+        //         return that.call(thatThis,...args,...args2);
+        //     }
+        // }
+
+        // const fn1 = fn.myBind(obj,1);
+        // console.log(fn1(2,3));
+
+        // 函数柯里化
+
+        function person(sex, age, name) {
+            return {
+                sex,
+                age,
+                name
+            }
         }
 
-        a();
-
-        new a();
-
-        var obj={
-            fn:a
+        function person1(sex) {
+            return function (age, name) {
+                return {
+                    sex,
+                    age,
+                    name
+                }
+            }
         }
-        obj.fn();
 
+        function person2(sex) {
+            return function(age){
+                return function (name) {
+                    return {
+                        sex,
+                        age,
+                        name
+                    }
+                }
+            }
+        }
 
+        const p1 = person("男", 38, "老王");
+
+        const pFn = person1("女");
+        const p2Fn = person2("女")(38);
+
+        const p2 = p2Fn("老王")
+        console.log(p1,p2)
     </script>
 </body>
+
 </html>

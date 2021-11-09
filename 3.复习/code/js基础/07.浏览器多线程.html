@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+      <li>aaa</li>
+      <li>bbb</li>
+      <li>ccc</li>
+  </ul>
+  <button id="test">test</button>
+  <div id="content">
+      aaaaaaa
+  </div>
+  <script>
+      /*
+        mounted->挂载结束 不等于 渲染结束
+            挂载:将节点插入到html中
+            渲染:将html的内容绘制到页面上
+
+        Firefox会先渲染页面再执行js代码
+
+        Chrome会在微任务队列执行结束,宏任务开始之前渲染页面
+
+        如果不把主线程代码当作第一宏任务看待,微任务的执行优先于宏任务的执行
+        如果把主线程代码当前第一宏任务看待,那么宏任务执行优先于微任务的执行
+
+        实际上,微任务队列会在每次宏任务结束之后立马清空
+
+        js引擎所在线程和GUI线程是互斥的
+      */
+      Promise.resolve().then(() => { // 微任务
+          alert('promise1') // 页面渲染了吗?
+      }) 
+      Promise.resolve().then(() => { // 微任务
+          alert('promise2') // 页面渲染了吗?
+      }) 
+      setTimeout(() => {// 宏任务
+          alert(document.getElementById('content').innerHTML)  // 页面渲染了吗?
+      }, 0)
+      document.getElementById('test').onclick = () => {// 宏任务
+          document.getElementById('content').innerHTML = 'xxxx'  // dom渲染 
+          setTimeout(() => {// ?任务  
+              alert(document.getElementById('content').innerHTML) // 页面更新渲染了吗?
+          }, 0); 
+          Promise.resolve().then(() => { // ?任务 
+              alert('promise3') //页面更新渲染了吗?
+          }) 
+      }
+      alert('1111') // 页面渲染了吗?
+
+  </script>
+</body>
+</html>
