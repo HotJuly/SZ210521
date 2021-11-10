@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import mixins from '../mixins';
 export default {
   name: 'HelloWorld',
   // props: {
@@ -22,6 +23,8 @@ export default {
   //     }
   //   }
   // },
+  mixins:[mixins],
+  inject:["msa"],
   props:["msg"],
   data(){
     return{
@@ -99,8 +102,8 @@ export default {
     }
   },
   mounted(){
-    this.a1=123
-    console.log('mounted')
+    // this.a1=123
+    console.log('mounted',this.msa)
   }
 }
 </script>

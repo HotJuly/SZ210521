@@ -18,10 +18,13 @@ export default {
     HelloWorld
   },
   a:2,
+  provide:Vue.observable({
+    msa:"我是provide的数据"
+  }),
   mounted(){
     // console.log(this.$options.a)
     // console.log(c)
-    console.log('name2',this.$options.name)
+    // console.log('name2',this.$options.name)
   }
 }
 </script>
