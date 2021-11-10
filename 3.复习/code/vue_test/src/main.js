@@ -35,6 +35,33 @@ Vue.config.errorHandler = function (err, vm, info) {
   console.log('errorHandler',err, vm, info)
 }
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+Vue.filter("timerFilter",function(val){
+  console.log(this)
+  return val+=this.isEdit
+})
+
+/*
+  需求:所有组件挂载结束之后,打印自己的组件名称
+    全局混合的生命周期函数,会优先于组件自身的生命周期函数执行,但是两者都会执行
+*/
+Vue.mixin({
+  mounted(){
+    console.log('name1',this.$options.name)
+  }
+})
+
+
+// new Vue({
+//   render: h => h(App),
+// }).$mount('#app')
+
+
+// var res = Vue.compile('<div><span>{{ msg }}</span></div>')
+
+// new Vue({
+//   data: {
+//     msg: 'hello'
+//   },
+//   render: res.render,
+//   staticRenderFns: res.staticRenderFns
+// }).$mount('#app')

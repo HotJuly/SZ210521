@@ -20,7 +20,8 @@ export default {
   a:2,
   mounted(){
     // console.log(this.$options.a)
-    console.log(c)
+    // console.log(c)
+    console.log('name2',this.$options.name)
   }
 }
 </script>
