@@ -50,10 +50,26 @@ Vue.mixin({
   }
 })
 
+/*
+  可以控制页面显示内容的渠道:
+    1.template配置对象
+    2.在public文件夹的html文件中
+    3.在render配置函数中
 
-// new Vue({
-//   render: h => h(App),
-// }).$mount('#app')
+    面试题:如果同时具有以上三者,渲染优先级如何?
+    render>template>index.html文件
+*/
+
+new Vue({
+  el:"#app",
+  data(){
+    return{
+      msg:"hello"
+    }
+  },
+  render: h => h(App),
+  template:"<div>{{msg}}</div>",
+}).$mount('#app')
 
 
 // var res = Vue.compile('<div><span>{{ msg }}</span></div>')

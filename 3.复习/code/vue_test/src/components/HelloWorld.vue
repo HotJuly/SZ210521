@@ -5,22 +5,33 @@
     <button v-else @click="changeShow">添加</button>
     <h2>name:{{obj.name}}</h2>
     <h2>age:{{obj.age}}</h2>
+    <h2>age1:{{doubleAge}}</h2>
+    <h2>age2:{{doubleAge}}</h2>
+    <h2>age3:{{doubleAge}}</h2>
+    <h2>age4:{{doubleAge}}</h2>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  // props: {
+  //   msg: {
+  //     validator(){
+  //       return true
+  //     }
+  //   }
+  // },
+  props:["msg"],
   data(){
     return{
       isEdit:false,
       obj:{
         name:"xiaoming",
         age:23
-      }
+      },
+      
+      // _a:1
     }
   },
   methods:{
@@ -71,6 +82,25 @@ export default {
       console.log(this)
       return val+=this.isEdit
     }
+  },
+  watch:{
+    a1(){
+      console.log('watch')
+    }
+  },
+  computed:{
+    a2(){
+      console.log('computed',this.a1)
+      return this.a1+1
+    },
+    doubleAge(){
+      console.log('doubleAge')
+      return this.obj.age*2;
+    }
+  },
+  mounted(){
+    this.a1=123
+    console.log('mounted')
   }
 }
 </script>
