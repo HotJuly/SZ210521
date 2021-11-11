@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <input type="text" :value="phone" @input="handleChange">
+    <slot name="footer" :msg="msg"></slot>
+    <!-- <input type="text" :value="phone" @input="handleChange"> -->
   </div>
 </template>
 
