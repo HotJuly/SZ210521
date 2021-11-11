@@ -1,30 +1,38 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <A></A>
+    <HelloWorld ref="Hello123" class="A" v-model="phone" msg="Welcome to Your Vue.js App"/>
+    <!-- <HelloWorld :value="phone" @input="(data)=>phone=data" msg="Welcome to Your Vue.js App"/> -->
+    <!-- <input type="text" v-model="phone"> -->
+    <!-- <input type="text" :value="phone" @input="event=>phone=event.target.value"> -->
+    <h1 ref="phone123">
+      {{phone}}
+    </h1>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import A from './components/A.vue'
 
 export default {
   name: 'App',
   data(){
     return{
-
+      phone:"177777777"
     }
   },
   components: {
-    HelloWorld
+    HelloWorld,
+    A
   },
-  a:2,
-  provide:Vue.observable({
-    msa:"我是provide的数据"
-  }),
   mounted(){
-    // console.log(this.$options.a)
-    // console.log(c)
-    // console.log('name2',this.$options.name)
+    // console.log(this.$data.phone)
+    // this.phone=123
+
+    // console.log(this.$children)
+    // this.$children[0].phone =123;
+    console.log(this.$refs.Hello123)
   }
 }
 </script>

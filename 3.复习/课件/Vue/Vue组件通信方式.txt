@@ -24,3 +24,33 @@
 			Vue.observable(普通对象)
 		3.如果存在多个provide对象,inject查找属性的顺序会由内向外查找
 
+3.自定义事件
+	给html标签绑定的事件就是原生事件
+	给Vue组件绑定的事件就是自定义事件
+	v-model
+		1.对input标签使用
+			-可以将data状态当作input框的默认值进行显示(动态设置value值即可)
+    				<input type="text" :value="phone">
+			-当用户修改input框内容时,需要同步修改data中的对应状态(给input框绑定input事件)
+    				<input type="text" @input="event=>phone=event.target.value">
+		2.对组件使用
+			-可以将data状态当作标签属性传递给子组件(动态设置value值即可)
+			-父组件会给子组件绑定自定义事件(事件名称为input)
+			可以通过model配置对象,动态设置v-model的默认标签属性名和事件名
+
+4.查找组件实例
+	$parent	->	用于找到父组件的组件实例对象
+	$children	->	用于找到所有的子组件对象组成的数组
+		该数组不是响应式的,他的排列顺序不会影响页面的显示顺序
+	$root	->	用于找到项目根组件实例(Root组件)
+	$refs	->	用于找到对应标签或者组件
+		该属性需要和ref标签属打配合
+		-用于html标签身上
+			可以获得对应标签的真实DOM
+		-用于组件标签身上
+			可以获得到对应标签的组件实例对象
+
+5.$attrs,$listeners
+	$attrs	->	用于收集未被props接收的标签属性
+	$listeners	->	用于收集当前组件自身所有的自定义事件
+

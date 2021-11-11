@@ -28,27 +28,27 @@ Vue.config.productionTip = false
 
 */
 
-// Vue.config.errorHandler = function (err, vm, info) {
-//   // handle error
-//   // `info` 是 Vue 特定的错误信息，比如错误所在的生命周期钩子
-//   // 只在 2.2.0+ 可用
-//   console.log('errorHandler',err, vm, info)
-// }
+Vue.config.errorHandler = function (err, vm, info) {
+  // handle error
+  // `info` 是 Vue 特定的错误信息，比如错误所在的生命周期钩子
+  // 只在 2.2.0+ 可用
+  console.log('errorHandler',err, vm, info)
+}
 
-// Vue.filter("timerFilter",function(val){
-//   console.log(this)
-//   return val+=this.isEdit
-// })
+Vue.filter("timerFilter",function(val){
+  console.log(this)
+  return val+=this.isEdit
+})
 
 /*
   需求:所有组件挂载结束之后,打印自己的组件名称
     全局混合的生命周期函数,会优先于组件自身的生命周期函数执行,但是两者都会执行
 */
-// Vue.mixin({
-//   mounted(){
-//     console.log('name1',this.$options.name)
-//   }
-// })
+Vue.mixin({
+  mounted(){
+    console.log('name1',this.$options.name)
+  }
+})
 
 /*
   可以控制页面显示内容的渠道:

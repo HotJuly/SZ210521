@@ -1,109 +1,27 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <input ref="input123" v-if="isEdit" type="text">
-    <button v-else @click="changeShow">添加</button>
-    <h2>name:{{obj.name}}</h2>
-    <h2>age:{{obj.age}}</h2>
-    <h2>age1:{{doubleAge}}</h2>
-    <h2>age2:{{doubleAge}}</h2>
-    <h2>age3:{{doubleAge}}</h2>
-    <h2>age4:{{doubleAge}}</h2>
+    <input type="text" :value="phone" @input="handleChange">
   </div>
 </template>
 
 <script>
-import mixins from '../mixins';
 export default {
   name: 'HelloWorld',
-  // props: {
-  //   msg: {
-  //     validator(){
-  //       return true
-  //     }
-  //   }
-  // },
-  mixins:[mixins],
-  inject:["msa"],
-  props:["msg"],
-  data(){
-    return{
-      isEdit:false,
-      obj:{
-        name:"xiaoming",
-        age:23
-      },
-      
-      // _a:1
-    }
+  props:["value","phone"],
+  model: {
+    prop: 'phone',
+    event: 'inputahsdghjasd'
   },
   methods:{
-    changeShow(){
-      /*
-        Vue更新机制
-          属性值更新是同步更新,页面更新(更新DOM)是异步更新
-          nextTick使用方法,必须在对应响应式数据更新之后立马调用nextTick,才能监视到对应变化
-          nextTick底层实现原理是.then
-      */
-      // this.isEdit = true;
-      // console.log(this.isEdit);
-      // // debugger
-      // this.$nextTick(()=>{
-      //   this.$refs.input123.focus();
-      // });
+    handleChange(event){
+      // console.log(event.target.value)
+      // this.value=event.target.value;
+      // this.$emit('inputahsdghjasd',event.target.value)
 
-      // console.log(1)
-
-      // this.$nextTick(()=>{
-      //   console.log('nextTick1')
-      // });
-
-      // this.isEdit = true;
-      // // ???仿佛这里有一个看不见的nextTick
-
-      // Promise.resolve().then(()=>{
-      //   console.log('Promise1')
-      // })
-
-      // this.$nextTick(()=>{
-      //   console.log('nextTick2')
-      // });
-
-      // Promise.resolve().then(()=>{
-      //   console.log('Promise2')
-      // })
-      // this.obj.age=24;
-      console.log(1)
-      // delete this.obj.age;
-      this.$delete(this.obj,'age')
-      console.log(2,this.obj)
+      // console.log(this.$parent)
+      this.$parent.phone = event.target.value
     }
-  },
-  a:3,
-  filters:{
-    timerFilter2(val){
-      console.log(this)
-      return val+=this.isEdit
-    }
-  },
-  watch:{
-    a1(){
-      console.log('watch')
-    }
-  },
-  computed:{
-    a2(){
-      console.log('computed',this.a1)
-      return this.a1+1
-    },
-    doubleAge(){
-      console.log('doubleAge')
-      return this.obj.age*2;
-    }
-  },
-  mounted(){
-    // this.a1=123
-    console.log('mounted',this.msa)
   }
 }
 </script>
