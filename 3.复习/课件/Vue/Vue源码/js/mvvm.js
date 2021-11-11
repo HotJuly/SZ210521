@@ -53,6 +53,17 @@ function MVVM(options) {
         2.如何更新页面视图
           将最新的属性值通过原生DOM操作渲染到页面上
 
+          响应式流程:
+            1.开发者修改响应式属性数据vm.msg="123",此时会触发数据代理
+            2.vm.msg="123" => vm._data.msg = "123"(此处会触发数据劫持的set方法)
+            3.set方法中会调用dep的notify方法,通知与当前响应式属性相关的所有watcher进行更新
+            4.所有对应的watcher的update方法被调用,会找到对应节点进行更新
+
+            注意:
+              1.Vue1中更新视图的最新单位是节点,Vue2中更新视图的最小单位是组件
+                Vue1中是每个插值语法会生成一个watcher
+                但是Vue2中是每个组件都会生成一个对应的watcher,注意更新的时候会触发diff算法,提高更新性能
+
       第二部分:数据劫持
         目的:为了监视用户对data对象中所有属性的属性值的修改动作,如果修改为新值,就会触发视图更新
 
@@ -65,7 +76,16 @@ function MVVM(options) {
     observe(data, this);
     // observe(data, vm);
 
+    /*
+      第三部分:模版解析
+      目的:
+        1.实现data数据在页面上的展示(模版解析,与响应式没有任何关系)
+        2.建立wacther和dep之间的映射关系,方便后续更新页面
+
+        
+    */
     this.$compile = new Compile(options.el || document.body, this)
+    // this.$compile = new Compile("#app", vm对象)
 }
 
 MVVM.prototype = {

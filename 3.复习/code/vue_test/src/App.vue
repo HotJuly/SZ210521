@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="B">
     <!-- <HelloWorld ref="Hello123" class="A" v-model="phone" msg="Welcome to Your Vue.js App"/> -->
     <!-- <HelloWorld :value="phone" @input="(data)=>phone=data" msg="Welcome to Your Vue.js App"/> -->
     <!-- <input type="text" v-model="phone"> -->

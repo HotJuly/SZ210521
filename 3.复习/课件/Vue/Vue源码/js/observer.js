@@ -36,6 +36,7 @@ Observer.prototype = {
 
         // 每次调用defineReactive就会生成一个dep对象
         // data中每有一个直系属性就会执行一次defineReactive
+        // 总结:data中每有一个响应式属性,就会创建一个dep对象
         var dep = new Dep();
 
         // 此处在执行隐式递归,
@@ -120,11 +121,14 @@ function Dep() {
 
 Dep.prototype = {
     addSub: function(sub) {
+        // dep.addSub(watcher);
+        // 此处dep正在收集与当前响应式属性相关的插值语法(watcher)
         this.subs.push(sub);
     },
 
     depend: function() {
         Dep.target.addDep(this);
+        // watcher.addDep(dep);
     },
 
     removeSub: function(sub) {
@@ -136,7 +140,9 @@ Dep.prototype = {
 
     notify: function() {
         this.subs.forEach(function(sub) {
+            // sub->watcher
             sub.update();
+            // watcher.update();
         });
     }
 };
