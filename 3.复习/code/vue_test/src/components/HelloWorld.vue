@@ -8,11 +8,11 @@
 <script>
 export default {
   name: 'HelloWorld',
-  props:["value","phone"],
-  model: {
-    prop: 'phone',
-    event: 'inputahsdghjasd'
-  },
+  props:["msg","value","phone"],
+  // model: {
+  //   prop: 'phone',
+  //   event: 'inputahsdghjasd'
+  // },
   methods:{
     handleChange(event){
       // console.log(event.target.value)
@@ -20,7 +20,9 @@ export default {
       // this.$emit('inputahsdghjasd',event.target.value)
 
       // console.log(this.$parent)
-      this.$parent.phone = event.target.value
+      // this.$parent.phone = event.target.value
+
+      this.$emit('update:phone',event.target.value)
     }
   }
 }
