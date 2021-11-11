@@ -14,6 +14,11 @@ export default {
   //   prop: 'phone',
   //   event: 'inputahsdghjasd'
   // },
+  data(){
+    return{
+      msg1:123
+    }
+  },
   methods:{
     handleChange(event){
       // console.log(event.target.value)
@@ -25,6 +30,21 @@ export default {
 
       this.$emit('update:phone',event.target.value)
     }
+  },
+  
+  // 生命周期钩子函数
+  beforeCreate(){
+    console.log('---------beforeCreate---------',this,this.msg1,this.$data,this.$el,this.$options)
+  },
+  created(){
+    console.log('---------created---------',this,this.msg1,this.$data.msg1,this.$el)
+  },
+  
+  beforeMount(){
+    console.log('---------beforeMount---------',this,this.msg1,this.$data.msg1,this.$el)
+  },
+  mounted(){
+    console.log('---------mounted---------',this,this.msg1,this.$data.msg1,this.$el)
   }
 }
 </script>

@@ -1,0 +1,44 @@
+# Vue生命周期
+
+1. 一共具有多少个生命周期钩子?
+   1. 总共11个,常用8个
+2. 项目中使用场景
+   1. 初始化阶段
+      1. beforeCreate
+         1. **beforeCreate之前在初始化生命周期**
+      2. created
+         1. 发送请求,获取数据
+            1. 优点:更早发送请求,那么请求可以更早回来
+         2. 注意:不要在created中,做一些非常消耗时间的事情,可能会导致首次挂载时间延迟,页面白屏更久
+         3. **beforeCreate之后created之前在初始化数据代理和数据劫持**
+      3. beforeMount
+         1. **created之后beforeMount之前检查是否已指定渲染的目标,同时将template字符串编译成render函数**
+      4. mounted
+         1. 发送请求,获取数据
+            1. 优点:此处可以做较为复杂的逻辑操作,不会阻塞页面的挂载
+            2. 缺点:请求数据的展示会比较慢
+         2. 操作真实DOM
+            1. Swiper
+            2. 滑动库
+         3. 绑定自定义事件
+         4. 开启定时器
+         5. **beforeMount之后mounted之前通过render函数生成虚拟DOM树,再通过虚拟DOM树生成真实DOM树,最终替换掉页面上的app元素**
+   2. 更新阶段
+      1. beforeUpdate
+      2. updated
+         1. data状态如果更新,就根据最新的data,进行二次操作真实DOM的事情
+   3. 卸载阶段
+      1. beforeDestroy
+         1. 关闭定时器
+         2. 解绑事件
+            1. 如果通过@或者v-on:绑定的原生事件不需要解绑
+            2. 当前组件自身的自定义事件都不需要解绑
+            3. 没有通过Vue绑定的原生事件($refs配合addEventListener或者onclick),这类事件需要手动解绑
+            4. 需要解绑与当前组件相关的全局事件总线
+      2. destroyed
+   4. keep-alive专用
+      1. activated(激活)
+      2. deactivated(失活)
+   5. 报错相关
+      1. errorCaptured
+

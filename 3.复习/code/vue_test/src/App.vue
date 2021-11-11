@@ -47,23 +47,23 @@ export default {
     HelloWorld,
     // A
   },
-  mounted(){
-    // console.log(this.$data.phone)
-    // this.phone=123
+  // mounted(){
+  //   // console.log(this.$data.phone)
+  //   // this.phone=123
 
-    // console.log(this.$children)
-    // this.$children[0].phone =123;
-    // console.log(this.$refs.Hello123)
-    // this.form = {};
-    setTimeout(()=>{
-      // this.form.name=777;
-      // this.$forceUpdate();
-      console.log(111)
-      // this.$destroy();
-      this.form.name=777;
-      console.log(222)
-    },1000)
-  },
+  //   // console.log(this.$children)
+  //   // this.$children[0].phone =123;
+  //   // console.log(this.$refs.Hello123)
+  //   // this.form = {};
+  //   setTimeout(()=>{
+  //     // this.form.name=777;
+  //     // this.$forceUpdate();
+  //     console.log(111)
+  //     // this.$destroy();
+  //     this.form.name=777;
+  //     console.log(222)
+  //   },1000)
+  // },
   watch:{
     phone:{
       immediate:true,

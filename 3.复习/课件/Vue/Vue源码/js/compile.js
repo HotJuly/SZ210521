@@ -7,6 +7,8 @@ function Compile(el, vm) {
     if (this.$el) {
         this.$fragment = this.node2Fragment(this.$el);
 
+        //beforeMount的执行时机
+        
         // 这一步在初始化页面,将模版中所有的插值语法都替换为data数据
         this.init();
 
@@ -14,6 +16,8 @@ function Compile(el, vm) {
         // Vue1中,会将编译完的结果插入到app元素内部
         // Vue2中,会将编译完的结果替换掉app元素
         this.$el.appendChild(this.$fragment);
+
+        // mounted的执行时机
 
     }
 }
