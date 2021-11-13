@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1 id="a1">我是h1标签</h1> -->
+    <script>
+        // var obj ={
+        //     tag:"h1",
+        //     id:"a1",
+        //     text:"我是h1标签"
+        // }
+        // obj.text="我不是h1标签";
+        // obj.id = "a2";
+        // obj.tag = "div";
+
+        // var h1 = document.createElement(obj.tag);
+        // h1.id=obj.id;
+        // h1.innerText = obj.text;
+
+        // document.body.appendChild(h1);
+
+        // var h1 = document.getElementsByTagName('h1')[0];
+        // console.dir(h1)
+        // h1.id="a2";
+
+        const oldTime = Date.now();
+        for(var i=0;i<10000;i++){
+            console.log(i);
+        }
+        const newTime = Date.now();
+        console.log(newTime - oldTime);
+    </script>
+</body>
+</html>
