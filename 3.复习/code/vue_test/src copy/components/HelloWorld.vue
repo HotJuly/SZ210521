@@ -5,7 +5,8 @@
     <!-- <input type="text" :value="phone" @input="handleChange"> -->
     <ul>
       <li v-for="(item,index) in arr" :key="item">
-        <label>{{item}}</label>
+        <label>5</label>
+        <span>5</span>
         <input type="text">
       </li>
     </ul>
@@ -23,8 +24,10 @@ export default {
   // },
   data(){
     return{
-      // msg1:123,
-      arr:[1,2,3,4,5]
+      msg1:123,
+      // mustance
+      arr:[1,2,3,4,5],
+      
     }
   },
   methods:{
