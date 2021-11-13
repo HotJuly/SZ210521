@@ -134,6 +134,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 
 /***/ }),
 
+/***/ "./src/lodash.js":
+/*!***********************!*\
+  !*** ./src/lodash.js ***!
+  \***********************/
+/*! exports provided: a1, a2, a3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"a1\", function() { return a1; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"a2\", function() { return a2; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"a3\", function() { return a3; });\nconst a1 = function(val1,val2){\r\n    console.log('a1')\r\n    return val1+val2\r\n}\r\n\r\nconst a2 = function(val1,val2){\r\n    console.log('a2')\r\n    return val1-val2\r\n}\r\n\r\nconst a3 = function(val1,val2){\r\n    console.log('a3')\r\n    return val1*val2\r\n}\n\n//# sourceURL=webpack:///./src/lodash.js?");
+
+/***/ }),
+
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
@@ -142,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/index */ \"./src/index.less\");\n\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/index */ \"./src/index.less\");\n/* harmony import */ var _lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lodash */ \"./src/lodash.js\");\n\r\n\r\n\r\n\r\nconsole.log(Object(_lodash__WEBPACK_IMPORTED_MODULE_1__[\"a1\"])(1,2))\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 
