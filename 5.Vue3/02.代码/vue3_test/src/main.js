@@ -5,11 +5,11 @@ import store from './store'
 
 createApp(App).use(store).use(router).mount('#app')
 
-// new Vue({
-//     store,
-//     router,
-//     render:h=>h(App)
-// })
-
-// Vue.use(Vuex)
 // Vue.use(VueRouter)
+// Vue.use(VueX)
+
+// new Vue({
+//     router,
+//     store,
+//     render
+// }).$mount("#app")
