@@ -7,7 +7,6 @@
     </ul>
     <button @click="addCar">有钱了,买辆车</button>
     <button @click="handleClick">过了一年,大了一岁</button>
-    <button @click="removeAge">删除年龄</button>
   </div>
 </template>
 
@@ -54,16 +53,11 @@ export default {
       user2.cars[1]="劳斯莱斯";
     }
 
-    let removeAge = ()=>{
-      delete user2.age;
-    }
-
     return {
       user,
       user2,
       handleClick,
-      addCar,
-      removeAge
+      addCar
     }
   },
   // beforeCreate(){

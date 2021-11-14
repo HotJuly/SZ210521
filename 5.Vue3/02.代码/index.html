@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var obj = {
+        //     _name:"xiaoming"
+        // }
+
+        // /*
+        //     Object.defineProperty只能绑定set和get方法
+        //     他只能监视到对目标对象的属性的读取和值的修改
+        //     无法做到:
+        //         无法监视属性的删除
+        //         无法监视属性的添加
+
+
+        // */
+        // Object.defineProperty(obj,"name",{
+        //     get(){
+        //         console.log('get')
+        //     },
+        //     set(){
+        //         console.log('set')
+        //     }
+        // })
+
+        // // obj.name= 123;
+        // // delete obj.name
+        // // console.log(obj.name)
+        // obj.name1 = 123;
+
+
+
+        var obj = {
+            name: "xiaoming",
+            age: 18,
+            cars: [
+                "玛莎拉蒂",
+                "五菱宏光",
+            ]
+        }
+        const user2 = new Proxy(obj, {
+            get(target,key) {
+                console.log('get')
+                return Reflect.get(target, key)
+            },
+            set(target,key,value) {
+                console.log('set',target,key,value)
+                // target[key]=value
+                Reflect.set(target, key, value)
+                // dep.notify()
+            },
+            deleteProperty(target,key) {
+                console.log('deleteProperty')
+                // delete target[key]
+                Reflect.deleteProperty(target, key)
+                // dep.notify()
+            },
+            // has(){
+            //     return true
+            // },
+            // getPrototypeOf(){
+            //     return {
+            //         name:"老王"
+            //     }
+            // }
+        })
+        // p.name=123;
+        // console.log(p.name)
+        // delete user2.name
+        // user2.age = "男"
+        // delete user2.name
+        // user2.sex = "未知"
+        console.log(user2.age)
+
+        // console.log("abccba" in user2)
+        // console.log(Object.getPrototypeOf(user2))
+    </script>
+</body>
+
+</html>
