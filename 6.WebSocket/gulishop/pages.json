@@ -1,0 +1,84 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+		    "path" : "pages/login/login",
+		    "style" : {}
+		}
+        ,{
+            "path" : "pages/index/index",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/group/group",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/contacts/contacts",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/mine/mine",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/singleChat/singleChat",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/groupChat/groupChat",
+			"style": {
+				"navigationStyle":"default",
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": {
+						"buttons": [
+							{
+								"text": "\ue645",
+								"fontSrc": "/static/font/iconfont.ttf"
+							}
+						]
+					}
+				}
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"color": "#999",
+		"selectedColor": "#365B53",
+		"backgroundColor": "#FEFEFE",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "./static/images/tabbar/message.png",
+				"selectedIconPath": "static/images/tabbar/message_active.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/group/group",
+				"iconPath": "./static/images/tabbar/group.png",
+				"selectedIconPath": "static/images/tabbar/group_active.png",
+				"text": "群聊"
+			},
+			{
+				"pagePath": "pages/contacts/contacts",
+				"iconPath": "./static/images/tabbar/book.png",
+				"selectedIconPath": "static/images/tabbar/book_active.png",
+				"text": "通讯录"
+			},
+			{
+				"pagePath": "pages/mine/mine",
+				"iconPath": "./static/images/tabbar/mine.png",
+				"selectedIconPath": "static/images/tabbar/mine_active.png",
+				"text": "我的"
+			}
+		]
+	}
+}

@@ -1,0 +1,145 @@
+scroll-view,
+swiper,
+swiper-item,
+view,
+text,
+input,
+textarea{
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font-size: 32rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+/*全局容器*/
+.container{
+	height: 100vh;
+}
+
+
+
+/*flex布局*/
+.flex-row{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.flex-column{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+
+/*文字省略*/
+.text-ellipsis{
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/*状态栏*/
+.status_bar{
+	color: #000;
+	height: 25px;
+	background-color: #fff;
+}
+
+/*间隔*/
+.space{
+	height: 20rpx;
+	background-color: #F7F7F7;
+}
+
+/*NAV*/
+.header{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	height: 88rpx;
+	padding: 0 30rpx;
+	background-color: #fff;
+}
+.header .left,
+.header .right{
+	width: 220rpx;
+}
+.header .center{
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	width: calc(100% - 440rpx);
+}
+.header .right{
+	text-align: right;
+}
+.header .nav-title{
+	font-size: 32rpx;
+}
+
+/* 头部*/
+.head{
+	height: 100rpx;
+	padding: 0 40rpx;
+}
+.head .title {
+	color: #000;
+	font-size: 48rpx;
+	font-weight: bold;
+}
+.head .icon {
+	width: 40rpx;
+	height: 40rpx;
+	margin-right: 6rpx;
+}
+.head .text {
+	color: #333;
+	font-size: 32rpx;
+}
+page {
+  height: 100%;
+}
+
+/*每个页面公共css */
+

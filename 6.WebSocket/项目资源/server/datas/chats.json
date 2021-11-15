@@ -1,0 +1,29 @@
+[{
+        "chatToken": "5818731675938",
+        "chatUsers": [
+            "5818731663906",
+            "5818732598638",
+            "5818733092542"
+        ],
+        "chatName": "尚硅谷沙雕群",
+        "chatType": "group",
+        "groupFace": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201804%2F15%2F20180415021308_QFYeG.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638410559&t=405b0678e042bc1f2148c7e26603d17d",
+        "lastModify": 1635908505411.0,
+        "lastText": "3",
+        "lastUserId": 5818733092542.0
+    },
+    {
+        "chatToken": "5818731679999",
+        "chatUsers": [
+            "5818731663906",
+            "5818733092542"
+        ],
+        "chatName": "新用户1<->新用户3",
+        "chatType": "single",
+        "lastModify": 1635908513251.0,
+        "lastText": "3",
+        "lastUserId": 5818733092542.0,
+        "userFace": "/static/images/wyz.png<->/static/images/pyy.png"
+    }
+
+]

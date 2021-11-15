@@ -1,0 +1,46 @@
+[{
+        "userId": "5818731663906",
+        "phone": 17688197770,
+        "password": "123456",
+        "nickName": "新用户1",
+        "avatarUrl": "/static/images/wyz.png",
+        "age": "未知",
+        "gender": "未知",
+        "birthday": "1970-01-01",
+        "provide": "广东",
+        "city": "深圳",
+        "tokenCreate": 1635842615442,
+        "salt": "ifATfW",
+        "token": "eyJhbGciOiJIUzI1NiJ9.NTgxODczMTY2MzkwNg.mNU4_Rw32vR4x6CiC5VQidY8KBMP62EX2Q0XBPsk5s4"
+    },
+    {
+        "userId": "5818732598638",
+        "phone": 17688197771,
+        "password": "123456",
+        "nickName": "新用户2",
+        "avatarUrl": "/static/images/default.jpg",
+        "age": "未知",
+        "gender": "未知",
+        "birthday": "1970-01-01",
+        "provide": "广东",
+        "city": "深圳",
+        "tokenCreate": 1635842654297,
+        "salt": "ihSGbs",
+        "token": "eyJhbGciOiJIUzI1NiJ9.NTgxODczMjU5ODYzOA.TvrDP8LGfW7Z8xKPJiaDZ9Vn5dmo9vLafGqo29hUUrg"
+    },
+    {
+        "userId": "5818733092542",
+        "phone": 17688197772,
+        "password": "123456",
+        "nickName": "新用户3",
+        "avatarUrl": "/static/images/pyy.png",
+        "age": "未知",
+        "gender": "未知",
+        "birthday": "1970-01-01",
+        "provide": "广东",
+        "city": "深圳",
+        "tokenCreate": 1635848410930,
+        "salt": "kG4JN4",
+        "token": "eyJhbGciOiJIUzI1NiJ9.NTgxODczMzA5MjU0Mg.Poooe6NOBqhxgqrYgSYPbMGdZira-h_t5xUYg2j42Eg"
+    }
+]

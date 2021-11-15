@@ -1,0 +1,36 @@
+.tip.data-v-0a81201e {
+  width: 100%;
+  text-align: center;
+  padding: 0 30rpx;
+  position: absolute;
+  bottom: 30rpx;
+}
+.tip .item.data-v-0a81201e {
+  color: #777;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.tip .item .link.data-v-0a81201e {
+  color: #00f;
+  font-size: 24rpx;
+}
+.input.data-v-0a81201e {
+  height: 80rpx;
+  padding: 0 20rpx;
+  margin: 60rpx 100rpx 0;
+  border: 2rpx solid #999;
+}
+.login.data-v-0a81201e {
+  color: #fff;
+  opacity: 0.6;
+  margin: 100rpx;
+  padding: 20rpx 0;
+  text-align: center;
+  border-radius: 10rpx;
+  background-color: #4cd964;
+}
+.login.able.data-v-0a81201e {
+  opacity: 1;
+  background-color: #4cd964;
+}
+

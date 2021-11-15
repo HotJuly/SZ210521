@@ -1,0 +1,81 @@
+.list.data-v-ea1fba08 {
+  height: calc(100vh - 100rpx - 25px);
+}
+.list .item.data-v-ea1fba08 {
+    width: 100vw;
+    height: 160rpx;
+    padding: 30rpx;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+}
+.list .item .cover.data-v-ea1fba08 {
+      width: 100rpx;
+      height: 100rpx;
+      border-radius: 10rpx;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 2rpx solid #f9f9f9;
+      position: relative;
+}
+.list .item .cover .icon.data-v-ea1fba08 {
+        width: 100%;
+        height: 100%;
+        border-radius: 10rpx;
+}
+.list .item .cover .tag.data-v-ea1fba08 {
+        color: #fff;
+        width: 30rpx;
+        height: 30rpx;
+        font-size: 20rpx;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        top: -12rpx;
+        right: -12rpx;
+        z-index: 9;
+}
+.list .item .cover .tag.empty.data-v-ea1fba08 {
+          width: 20rpx;
+          height: 20rpx;
+          background-color: #F72727;
+          top: -6rpx;
+          right: -6rpx;
+}
+.list .item .title.data-v-ea1fba08 {
+      height: 100%;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      width: calc(100vw - 130rpx - 60rpx);
+      position: relative;
+}
+.list .item .title.data-v-ea1fba08::after {
+        content: '';
+        width: 100%;
+        height: 2rpx;
+        background-color: #F6F6F6;
+        position: absolute;
+        left: 0;
+        bottom: -30rpx;
+}
+.list .item .title .main.data-v-ea1fba08 {
+        height: 40rpx;
+        margin: 6rpx 0 12rpx;
+}
+.list .item .title .main .text.data-v-ea1fba08 {
+          color: #333;
+          font-size: 32rpx;
+          font-weight: 600;
+}
+.list .item .title .main .time.data-v-ea1fba08 {
+          color: #666;
+          font-size: 24rpx;
+}
+.list .item .title .sub.data-v-ea1fba08 {
+        color: #999;
+        font-size: 24rpx;
+}
+
