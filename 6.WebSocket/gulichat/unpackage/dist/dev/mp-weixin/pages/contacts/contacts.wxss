@@ -1,0 +1,89 @@
+.add-friend.data-v-35b25266 {
+  width: 600rpx;
+  height: 460rpx;
+  padding: 0 40rpx;
+  border-radius: 10rpx;
+  background-color: #FFF;
+  position: relative;
+}
+.add-friend .close.data-v-35b25266 {
+    position: absolute;
+    right: 20rpx;
+    top: 20rpx;
+}
+.add-friend .title.data-v-35b25266 {
+    height: 120rpx;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 120rpx;
+}
+.add-friend .input.data-v-35b25266 {
+    height: 80rpx;
+    padding: 0 30rpx;
+    border-radius: 10rpx;
+    margin: 40rpx 0 80rpx;
+    border: 2rpx solid #ddd;
+}
+.add-friend .btn.data-v-35b25266 {
+    color: #FFF;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    background-color: #2CA246;
+}
+.add-friend .btn.disabled.data-v-35b25266, .add-friend .btn.data-v-35b25266:active {
+      opacity: 0.8;
+}
+.list.data-v-35b25266 {
+  height: calc(100vh - 100rpx - 25px);
+}
+.list .item.data-v-35b25266 {
+    width: 100vw;
+    padding: 20rpx 30rpx 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.list .item .cover.data-v-35b25266 {
+      width: 80rpx;
+      height: 80rpx;
+      border-radius: 10rpx;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 2rpx solid #f9f9f9;
+      position: relative;
+}
+.list .item .cover .icon.data-v-35b25266 {
+        width: 100%;
+        height: 100%;
+        border-radius: 10rpx;
+}
+.list .item .title.data-v-35b25266 {
+      height: 100%;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      width: calc(100vw - 110rpx - 60rpx);
+      position: relative;
+}
+.list .item .title.data-v-35b25266::after {
+        content: '';
+        width: 100%;
+        height: 2rpx;
+        background-color: #F6F6F6;
+        position: absolute;
+        left: 0;
+        bottom: -34rpx;
+}
+.list .item .title .main.data-v-35b25266 {
+        margin: 6rpx 0;
+}
+.list .item .title .main .text.data-v-35b25266 {
+          color: #333;
+          font-size: 32rpx;
+          font-weight: 600;
+}
+.list .item .title .main .time.data-v-35b25266 {
+          color: #666;
+          font-size: 24rpx;
+}
+

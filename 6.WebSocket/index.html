@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var ws = new WebSocket({
+        //     url: "ws://localhost:3000",
+        //     header: {
+        //         token: "eyJhbGciOiJIUzI1NiJ9.NTgxODczMTY2MzkwNg.mNU4_Rw32vR4x6CiC5VQidY8KBMP62EX2Q0XBPsk5s4"
+        //     },
+        //     protocols: ["echo-protocol"]
+        // })
+        var ws = new WebSocket("ws://localhost:3000",["echo-protocol"])
+        // ws.header
+        ws.onopen=function(){
+            console.log('open success')
+            ws.send("eyJhbGciOiJIUzI1NiJ9.NTgxODczMTY2MzkwNg.mNU4_Rw32vR4x6CiC5VQidY8KBMP62EX2Q0XBPsk5s4")
+        }
+        ws.onerror=function(){
+            console.log('error success')
+        }
+        ws.onmessage=function(){
+            console.log('message success')
+        }
+        ws.onclose=function(){
+            console.log('close success')
+        }
+    </script>
+</body>
+
+</html>
